@@ -1,32 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj": {}
+    "D:\\VuongNQ\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj": {}
   },
   "projects": {
-    "D:\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj": {
+    "D:\\VuongNQ\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj",
+        "projectUniqueName": "D:\\VuongNQ\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj",
         "projectName": "TrainTicketSales",
-        "projectPath": "D:\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj",
-        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\TrainTicketSales\\TrainTicketSales\\obj\\",
+        "projectPath": "D:\\VuongNQ\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj",
+        "packagesPath": "C:\\Users\\VuongNQ\\.nuget\\packages\\",
+        "outputPath": "D:\\VuongNQ\\TrainTicketSales\\TrainTicketSales\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
+          "C:\\Users\\VuongNQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\devpresss\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
