@@ -1,0 +1,71 @@
+﻿
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Trang chủ";
+
+}
+<div style="width:100%">
+    <div class="row">
+    <div class="col-xs-12 col-sm-4 et-col-md-3">
+        <div class="col-md-12 et-widget" style="margin-bottom: 5px;">
+            <div class="row et-widget-header">
+                <img style="height:10px" src="./Images/widgetIcon.png" />
+                <span>Thông tinh hành trình</span>
+            </div>
+            <div class="form-group style-title2">
+                <h6 class="ng-binding">Ga đi</h6>
+                <span class="control-label ng-binding ng-hide" ng-show="gaDiError">Ga đi không hợp lệ</span>
+                <input type="text" class="form-control input-sm">
+            </div>
+            <div class="form-group style-title2">
+                <h6 class="ng-binding">Ga về</h6>
+                <span class="control-label ng-binding ng-hide" ng-show="gaDiError">Ga đi không hợp lệ</span>
+                <input type="text" class="form-control input-sm">
+            </div>
+            <div class="et-direct-block">
+                <input type="radio" value="0" name="oneWay">
+                <span>Một chiều</span>
+                <input type="radio" value="0" name="oneWay">
+                <span>khứ hồi</span>
+            </div>
+            <div class="form-group style-title2">
+                <h6 class="ng-binding">Ngày đi</h6>
+                <span class="control-label ng-binding ng-hide" ng-show="gaDiError">Ga đi không hợp lệ</span>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type="text" class="form-control input-sm">
+                    <span class="input-group-addon" style="display: flex; justify-content: center; align-items: center;">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+
+                </div>
+            </div>
+            <div class="form-group style-title2">
+                <h6 class="ng-binding">Ngày đi</h6>
+                <span class="control-label ng-binding ng-hide" ng-show="gaDiError">Ga đi không hợp lệ</span>
+                <div class='input-group date' id='datetimepicker'>
+                    <input type="text" class="form-control input-sm">
+                    <span class="input-group-addon" style="display: flex; justify-content: center; align-items: center;">
+                        <span><i class="fa fa-calendar"></i></span>
+                    </span>
+                </div>
+            </div>
+            <div class=" col-md-12 text-center" style="margin-top: 2px;">
+                <a class="btn btn-sm et-btn ">Tìm kiếm</a>
+            </div>
+        </div>
+    </div>
+        <div class="col-xs-12 col-sm-8 et-col-md-6">
+            <div class="et-col-md-12 et-widget alert alert-info" style="margin-bottom: 0px;color:#0091d4">
+                <p>
+                    Thực hiện Quyết định số 1839/QĐ-BGTVT ngày 20/10/2021 của Bộ GTVT
+                    Hướng dẫn tạm thời về tổ chức hoạt động vận tải hành khách bằng ĐS đảm bảo thích ứng an toàn, linh hoạt, k
+                    iểm soát hiệu quả dịch Covid 19, quý khách vui lòng đọc kỹ mục Điều kiện hành khách đi tàu từ ngày 21/10/2021
+                    bên dưới.
+                    <br />
+                <p>Ngoài ra để kiểm soát và ngăn ngừa dịch bệnh Covid-19, Ngành Đường sắt kính đề nghị Quý khách hàng khi đến ga mua vé hoặc đi tàu thực hiện các biện pháp phòng chống dịch bệnh theo THÔNG ĐIỆP 5K của Bộ Y tế Khẩu trang – Khử khuẩn – Khoảng cách – Không tập trung – Khai báo y tế<</p>
+                </p>
+            </div>
+        </div>
+        </div>
+</div>

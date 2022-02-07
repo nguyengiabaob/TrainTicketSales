@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <partial name="_Head"/>
+    @RenderSection("Styles", required:false)
+</head>
+<body>
+    <partial name="_Nav"/>
+    <div class="container et-main-content">
+        <main style="display:flex">
+            
+           @RenderBody()
+        </main>
+        <partial name="_Footer" />
+    </div>
+    <partial name="_Js"/>
+    @RenderSection("Script",required:false)
+</body>
+</html>
