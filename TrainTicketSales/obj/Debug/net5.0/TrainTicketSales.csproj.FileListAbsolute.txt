@@ -153,3 +153,8 @@ D:\VuongNQ\TrainTicketSales\TrainTicketSales\obj\Debug\net5.0\TrainTicketSales.d
 D:\VuongNQ\TrainTicketSales\TrainTicketSales\obj\Debug\net5.0\ref\TrainTicketSales.dll
 D:\VuongNQ\TrainTicketSales\TrainTicketSales\obj\Debug\net5.0\TrainTicketSales.pdb
 D:\VuongNQ\TrainTicketSales\TrainTicketSales\obj\Debug\net5.0\TrainTicketSales.genruntimeconfig.cache
+D:\VuongNQ\TrainTicketSales\TrainTicketSales\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\VuongNQ\TrainTicketSales\TrainTicketSales\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\VuongNQ\TrainTicketSales\TrainTicketSales\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+D:\VuongNQ\TrainTicketSales\TrainTicketSales\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\VuongNQ\TrainTicketSales\TrainTicketSales\obj\Debug\net5.0\TrainTicketSales.MvcApplicationPartsAssemblyInfo.cs

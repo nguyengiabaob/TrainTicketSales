@@ -7,11 +7,20 @@ namespace TrainTicketSales.Models.Entity
 {
     public partial class Station
     {
-        public int Id { get; set; }
+        public Station()
+        {
+            ScheduleBeginStation = new HashSet<Schedule>();
+            ScheduleEndStation = new HashSet<Schedule>();
+        }
+
+        public long Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Km { get; set; }
         public string Address { get; set; }
         public int? Index { get; set; }
+
+        public virtual ICollection<Schedule> ScheduleBeginStation { get; set; }
+        public virtual ICollection<Schedule> ScheduleEndStation { get; set; }
     }
 }

@@ -5,19 +5,16 @@ using System.Collections.Generic;
 
 namespace TrainTicketSales.Models.Entity
 {
-    public partial class Train
+    public partial class CabinCategory
     {
-        public Train()
+        public CabinCategory()
         {
             Cabin = new HashSet<Cabin>();
-            Schedule = new HashSet<Schedule>();
         }
 
         public string Code { get; set; }
         public string Name { get; set; }
-        public string Des { get; set; }
 
         public virtual ICollection<Cabin> Cabin { get; set; }
-        public virtual ICollection<Schedule> Schedule { get; set; }
     }
 }

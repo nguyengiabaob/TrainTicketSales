@@ -7,9 +7,20 @@ namespace TrainTicketSales.Models.Entity
 {
     public partial class Seat
     {
+        public Seat()
+        {
+            SeatDetail = new HashSet<SeatDetail>();
+        }
+
         public long Id { get; set; }
-        public string CabinCode { get; set; }
-        public string SeatCode { get; set; }
-        public string TrainId { get; set; }
+        public long? CabinId { get; set; }
+        public string SeatCategoryCode { get; set; }
+        public string FloorCode { get; set; }
+        public int? Index { get; set; }
+
+        public virtual Cabin Cabin { get; set; }
+        public virtual Floor FloorCodeNavigation { get; set; }
+        public virtual SeatCategory SeatCategoryCodeNavigation { get; set; }
+        public virtual ICollection<SeatDetail> SeatDetail { get; set; }
     }
 }

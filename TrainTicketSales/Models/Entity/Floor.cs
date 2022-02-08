@@ -5,9 +5,16 @@ using System.Collections.Generic;
 
 namespace TrainTicketSales.Models.Entity
 {
-    public partial class SeatInf
+    public partial class Floor
     {
+        public Floor()
+        {
+            Seat = new HashSet<Seat>();
+        }
+
         public string Code { get; set; }
         public string Name { get; set; }
+
+        public virtual ICollection<Seat> Seat { get; set; }
     }
 }

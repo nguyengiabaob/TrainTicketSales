@@ -18,6 +18,14 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[CabinCategory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Floor]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[SaleOrder]",
          "ObjectType": 0
       },
@@ -26,11 +34,19 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Schedule]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Seat]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[SeatInf]",
+         "Name": "[dbo].[SeatCategory]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SeatDetail]",
          "ObjectType": 0
       },
       {
@@ -39,6 +55,10 @@
       },
       {
          "Name": "[dbo].[Train]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Users]",
          "ObjectType": 0
       }
    ],
