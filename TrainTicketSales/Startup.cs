@@ -42,15 +42,29 @@ namespace TrainTicketSales
             });
 
 
+             //services.AddMvc()
+             //  .AddNewtonsoftJson(options =>
+             //  {
+             //      options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+             //      options.SerializerSettings.DateFormatString = "yyyy-MM-dd";
+             //      //options.SerializerSettings.MaxDepth = 2;
+             //  });
+            //services.AddMvc(option => option.EnableEndpointRouting = false)
+            //   .AddNewtonsoftJson(options =>
+            //   {
+            //       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            //       options.SerializerSettings.DateFormatString = "yyyy-MM-dd";
+            //       //options.SerializerSettings.MaxDepth = 2;
+            //   });
 
-            services.AddMvc(option => option.EnableEndpointRouting = false)
-               .AddNewtonsoftJson(options =>
-               {
-                   options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                   options.SerializerSettings.DateFormatString = "yyyy-MM-dd";
-                   //options.SerializerSettings.MaxDepth = 2;
-               });
-            services.AddControllers();
+            //            services.AddControllersWithViews()
+            //    .AddNewtonsoftJson(options =>
+            //    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            //);
+              
+
+            //services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddSwaggerGen(c =>
             {
