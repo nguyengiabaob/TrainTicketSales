@@ -34,7 +34,7 @@
       "TrainTicketSales/1.0.0": {
         "dependencies": {
           "Dapper": "2.0.123",
-          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "5.0.12",
+          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "5.0.9",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.12",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.12",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2",
@@ -353,31 +353,31 @@
           "System.Text.Encodings.Web": "4.5.0"
         }
       },
-      "Microsoft.AspNetCore.JsonPatch/5.0.12": {
+      "Microsoft.AspNetCore.JsonPatch/5.0.9": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
           "Newtonsoft.Json": "12.0.2"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {
-            "assemblyVersion": "5.0.12.0",
-            "fileVersion": "5.0.1221.52401"
+            "assemblyVersion": "5.0.9.0",
+            "fileVersion": "5.0.921.36503"
           }
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/5.0.12": {
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/5.0.9": {
         "dependencies": {
-          "Microsoft.AspNetCore.JsonPatch": "5.0.12",
+          "Microsoft.AspNetCore.JsonPatch": "5.0.9",
           "Newtonsoft.Json": "12.0.2",
           "Newtonsoft.Json.Bson": "1.0.2"
         },
         "runtime": {
           "lib/net5.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll": {
-            "assemblyVersion": "5.0.12.0",
-            "fileVersion": "5.0.1221.52401"
+            "assemblyVersion": "5.0.9.0",
+            "fileVersion": "5.0.921.36503"
           }
         },
         "compile": {
@@ -3634,19 +3634,19 @@
       "path": "microsoft.aspnetcore.html.abstractions/2.2.0",
       "hashPath": "microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.JsonPatch/5.0.12": {
+    "Microsoft.AspNetCore.JsonPatch/5.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YIatogsp7E1zCTlY9H2AG0lxPHHQ7o1Wy9thydeMx++CD81WBCAoeLjSdR4M9+Jz7U3Ujqhl9T1gH7vzNTMI4w==",
-      "path": "microsoft.aspnetcore.jsonpatch/5.0.12",
-      "hashPath": "microsoft.aspnetcore.jsonpatch.5.0.12.nupkg.sha512"
+      "sha512": "sha512-Y898BNDwTNaLK9AV4sZfYUeVC0LtWP0VdcOd04txbpFpFv5BgYbiLumQkmecwX40+KnxsqxGSCcOB8buBeadtw==",
+      "path": "microsoft.aspnetcore.jsonpatch/5.0.9",
+      "hashPath": "microsoft.aspnetcore.jsonpatch.5.0.9.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/5.0.12": {
+    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/5.0.9": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YRN5arw9mFDXor6tPVdwMzi8m2V15n3DUFF2iG5QQkBQuR9sKGU4CbyQ3HIjXDln6ChH02K/9HCGsnRtPAv8hg==",
-      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/5.0.12",
-      "hashPath": "microsoft.aspnetcore.mvc.newtonsoftjson.5.0.12.nupkg.sha512"
+      "sha512": "sha512-tJ7i6BDf/y+iKc1fuS6SRwelcSvhHkfQ86RhHVpUol4LfcW3WnSSL+njPuT2KmJidfJ349/7+eb/pCERHYG0/A==",
+      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/5.0.9",
+      "hashPath": "microsoft.aspnetcore.mvc.newtonsoftjson.5.0.9.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor/2.2.0": {
       "type": "package",

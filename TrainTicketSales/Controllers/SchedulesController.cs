@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using TrainTicketSales.Helpers;
 using TrainTicketSales.Models.Entity;
 using TrainTicketSales.ModelsViews;
 
@@ -16,30 +19,33 @@ namespace TrainTicketSales.Controllers
     public class SchedulesController : ControllerBase
     {
         private readonly DsvnContext _context;
-
-        public SchedulesController(DsvnContext context)
+        private readonly IDapper _dapper;
+        public SchedulesController(DsvnContext context, IDapper dapper)
         {
             _context = context;
+            _dapper = dapper;
         }
 
         // GET: api/Schedules
-        [HttpGet]
+        [HttpGet("GetTrain")]
         public async Task<ScheduleViewModel> GetSchedule(long StationBegin, long StationEnd, DateTime date)
         {
-            List< TrainViewModel> TrainList = new List<TrainViewModel>();   
-            var val= await _context.Schedule.Where(x=>x.BeginStationId==StationBegin && x.EndStationId ==StationEnd && x.DateBegin==date).ToListAsync();
+            List<TrainViewModel> TrainList = new List<TrainViewModel>();
+            var val = await _context.Schedule.Where(x => x.BeginStationId == StationBegin && x.EndStationId == StationEnd && x.DateBegin == date).ToListAsync();
             foreach (var item in val)
             {
-                var train= _context.Train.Where(x=>x.Code==item.TrainCode).Include(x=>x.Cabin).ToList()[0];
-                TrainViewModel abc= new TrainViewModel();   
-                abc.Code=train.Code;    
-                abc.Name=train.Name;
-                abc.Des=train.Des;
-                abc.Cabin= JsonConvert.DeserializeObject<IEnumerable<CabinViewModel>>(JsonConvert.SerializeObject(train.Cabin)) ;
-                TrainList.Add(abc);
+                var train = _context.Train.Where(x => x.Code == item.TrainCode).Include(x => x.Cabin).ToList()[0];
+                TrainViewModel trainModel = new TrainViewModel();
+                trainModel.Code = train.Code;
+                trainModel.Name = train.Name;
+                trainModel.Des = train.Des;
+                var parameters = new DynamicParameters();
+                parameters.Add("@trainCode", train.Code);
+                trainModel.Cabin = _dapper.GetMultiByStoreProcedure<CabinViewModel>("Cabin_GetByTrain", parameters, commandType: CommandType.StoredProcedure);                 
+                TrainList.Add(trainModel);
             }
             //var result = JsonConvert.DeserializeObject<IEnumerable<ScheduleViewModel>>(JsonConvert.SerializeObject(val));
-            return new ScheduleViewModel(){ TrainsList=TrainList };
+            return new ScheduleViewModel() { TrainsList = TrainList };
         }
 
         // GET: api/Schedules/5
