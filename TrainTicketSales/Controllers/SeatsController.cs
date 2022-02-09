@@ -27,7 +27,7 @@ namespace TrainTicketSales.Controllers
         }
 
         // GET: api/Seats
-        [HttpGet]
+        [HttpGet("GetByTrain")]
         public async Task<IEnumerable<SeatViewModel>> GetSeatByCabin(long cabinId)
         {
             var parameters = new DynamicParameters();
