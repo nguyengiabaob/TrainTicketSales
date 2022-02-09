@@ -865,6 +865,26 @@ h5 {
     font-size: 12px;
     background-color:#ddd;
 }
+.container-paying.form-control
+{
+    height: 30px !important
+}
+.style-input.input-group-addon.text-left
+{
+    width:auto !important
+}
+.style-menu{
+    border-bottom : 1px solid #ccc;
+    float:left;
+  
+    width:100%
+}
+    .style-menu:hover {
+        background: linear-gradient(#0083c1,#0091d4);
+    }
+.style-menu .nav-item {
+    color: white;
+}
 
 
 
