@@ -1,34 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VuongNQ\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj": {}
+    "D:\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj": {}
   },
   "projects": {
-    "D:\\VuongNQ\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj": {
+    "D:\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VuongNQ\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj",
+        "projectUniqueName": "D:\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj",
         "projectName": "TrainTicketSales",
-        "projectPath": "D:\\VuongNQ\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj",
-        "packagesPath": "C:\\Users\\VuongNQ\\.nuget\\packages\\",
-        "outputPath": "D:\\VuongNQ\\TrainTicketSales\\TrainTicketSales\\obj\\",
+        "projectPath": "D:\\TrainTicketSales\\TrainTicketSales\\TrainTicketSales.csproj",
+        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
+        "outputPath": "D:\\TrainTicketSales\\TrainTicketSales\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\VuongNQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
+          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.1.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "D:\\devpresss\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {}
           }
         },
@@ -39,8 +42,40 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -59,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

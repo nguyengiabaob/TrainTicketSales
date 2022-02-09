@@ -1,0 +1,1225 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API_CRM</name>
+    </assembly>
+    <members>
+        <member name="M:API_CRM.Controllers.CustomersController.UpdateCustomer(API_CRM.ViewModels.Customer.CustomerObjectAddViewModel)">
+            <summary>
+            
+            </summary>
+            <param name="customerObjectAddViewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API_CRM.Controllers.CustomersController.GetCustomerDetail(System.Int64)">
+            <summary>
+            api/Customers/GetCustomerDetail/46
+            </summary>
+            <param name="UserID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API_CRM.Controllers.CustomersController.DeleteCustomer(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="CustomerID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API_CRM.Helpers.IGeneral.GetCode(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            Summary:
+                    Get code from table in database
+            Parameters:
+                    value: 
+                        tableName : "Customers.Customer"
+                        Codestr: "CU"
+                        len: 3 (lenght of string number [example: "CU0001" leght is 4])
+                        columnName: "CustomerCode" (column name get code)
+            Returns:       
+                    string of code
+            </summary>
+            <param name="tableName"></param>
+            <param name="Codestr"></param>
+            <param name="len"></param>
+            <param name="columnName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.BeginDate">
+            <summary>
+            Ngày bắt đầu hợp đồng
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.EndDate">
+            <summary>
+            Ngày kết thúc hợp đồng
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.EffectiveDate">
+            <summary>
+            Ngày hiệu lực
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.Owner">
+            <summary>
+            Chủ sở hữu
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.WarningExpired">
+            <summary>
+            cảnh báo hết hạn(1: hết hạn, 0: còn hạn)
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.Representative">
+            <summary>
+            Người đại diện
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.Position">
+            <summary>
+            Chức vụ
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.Amount">
+            <summary>
+            Giá trị hợp đồng
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.TaxValues">
+            <summary>
+            Tiền thuế
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.TransportCost">
+            <summary>
+            Chi phí vận chuyển
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Contract.Vat">
+            <summary>
+            phần trăm VAT
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ContractDetail.Description">
+            <summary>
+            Diễn giải
+            </summary>
+        </member>
+        <member name="T:API_CRM.Models.EntityClass.Currency">
+            <summary>
+            Lookup table containing standard ISO currencies.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Currency.CurrencyCode">
+            <summary>
+            The ISO code for the Currency.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Currency.Name">
+            <summary>
+            Currency name.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Currency.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.CurrencyRate.Id">
+            <summary>
+            Primary key for CurrencyRate records.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.CurrencyRate.CurrencyRateDate">
+            <summary>
+            Date and time the exchange rate was obtained.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.CurrencyRate.FromCurrencyCode">
+            <summary>
+            Exchange rate was converted from this currency code.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.CurrencyRate.ToCurrencyCode">
+            <summary>
+            Exchange rate was converted to this currency code.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.CurrencyRate.AverageRate">
+            <summary>
+            Average exchange rate for the day.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.CurrencyRate.EndOfDayRate">
+            <summary>
+            Final exchange rate for the day.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.CurrencyRate.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Customer.IdSource">
+            <summary>
+            nguồn gốc lấy thông tin khách hàng từ đâu: fb, web...
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Customer.CustomerName">
+            <summary>
+            First name of the person.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Customer.BankAccount">
+            <summary>
+            Tài khoản ngân hàng
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Customer.AddressOffice">
+            <summary>
+            địa chỉ đăng ký kinh doanh
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Customer.AddressDelivery">
+            <summary>
+            địa điểm giao hàng
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Customer.ProposalDueDate">
+            <summary>
+            ngày đến hạn
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Customer.Rating">
+            <summary>
+            Xếp hạng
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Customer.Budget">
+            <summary>
+            ngân sách
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Customer.BackgroundInfo">
+            <summary>
+            Thông tin cơ bản
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Customer.Reference">
+            <summary>
+            tài liệu tham khảo
+            </summary>
+        </member>
+        <member name="T:API_CRM.Models.EntityClass.CustomerExtend">
+            <summary>
+            Bảng này lưu các trường do user tự định nghĩa 
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.CustomerExtend.CustomerExtendDescription">
+            <summary>
+            tên cột
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.CustomerExtend.CustomerExtendContents">
+            <summary>
+            giá trị của côt
+            </summary>
+        </member>
+        <member name="T:API_CRM.Models.EntityClass.Department">
+            <summary>
+            Department Listing
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Phone.Id">
+            <summary>
+            Business entity identification number. Foreign key to Person.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Phone.PhoneNumber">
+            <summary>
+            Telephone number identification number.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Phone.PhoneNumberTypeId">
+            <summary>
+            Kind of phone number. Foreign key to PhoneNumberType.PhoneNumberTypeID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Phone.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PhoneType.Id">
+            <summary>
+            Primary key for telephone number type records.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PhoneType.Name">
+            <summary>
+            Name of the telephone number type
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PhoneType.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Photo.Id">
+            <summary>
+            Primary key for ProductPhoto records.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Photo.ThumbNailPhoto">
+            <summary>
+            Small image of the product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Photo.ThumbnailPhotoFileName">
+            <summary>
+            Small image file name.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Photo.LargePhoto">
+            <summary>
+            Large image of the product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Photo.LargePhotoFileName">
+            <summary>
+            Large image file name.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Photo.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.Id">
+            <summary>
+            Primary key for Product records.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.Name">
+            <summary>
+            Name of the product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.ProductNumber">
+            <summary>
+            Unique product identification number.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.MakeFlag">
+            <summary>
+            0 = Product is purchased, 1 = Product is manufactured in-house.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.FinishedGoodsFlag">
+            <summary>
+            0 = Product is not a salable item. 1 = Product is salable.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.Color">
+            <summary>
+            Product color.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.SafetyStockLevel">
+            <summary>
+            Minimum inventory quantity. 
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.ReorderPoint">
+            <summary>
+            Inventory level that triggers a purchase order or work order. 
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.StandardCost">
+            <summary>
+            Standard cost of the product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.ListPrice">
+            <summary>
+            Selling price.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.Size">
+            <summary>
+            Product size.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.SizeUnitMeasureCode">
+            <summary>
+            Unit of measure for Size column.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.WeightUnitMeasureCode">
+            <summary>
+            Unit of measure for Weight column.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.Weight">
+            <summary>
+            Product weight.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.DaysToManufacture">
+            <summary>
+            Number of days required to manufacture the product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.ProductLine">
+            <summary>
+            R = Road, M = Mountain, T = Touring, S = Standard
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.Class">
+            <summary>
+            H = High, M = Medium, L = Low
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.Style">
+            <summary>
+            W = Womens, M = Mens, U = Universal
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.ProductSubcategoryId">
+            <summary>
+            Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID. 
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.ProductModelId">
+            <summary>
+            Product is a member of this product model. Foreign key to ProductModel.ProductModelID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.SellStartDate">
+            <summary>
+            Date the product was available for sale.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.SellEndDate">
+            <summary>
+            Date the product was no longer available for sale.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.DiscontinuedDate">
+            <summary>
+            Date the product was discontinued.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Product.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductCategory.Id">
+            <summary>
+            Primary key for ProductCategory records.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductCategory.Name">
+            <summary>
+            Category description.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductCategory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductCostHistory.ProductCode">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductCostHistory.StartDate">
+            <summary>
+            Product cost start date.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductCostHistory.EndDate">
+            <summary>
+            Product cost end date.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductCostHistory.StandardCost">
+            <summary>
+            Standard cost of the product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductCostHistory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductListPriceHistory.ProductCode">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductListPriceHistory.StartDate">
+            <summary>
+            List price start date.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductListPriceHistory.EndDate">
+            <summary>
+            List price end date
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductListPriceHistory.ListPrice">
+            <summary>
+            Product list price.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductListPriceHistory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductPhoto.ProductCode">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductPhoto.ProductPhotoId">
+            <summary>
+            Product photo identification number. Foreign key to ProductPhoto.ProductPhotoID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductPhoto.Primary">
+            <summary>
+            0 = Photo is not the principal image. 1 = Photo is the principal image.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductPhoto.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductSubCategory.Id">
+            <summary>
+            Primary key for ProductSubcategory records.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductSubCategory.ProductCategoryId">
+            <summary>
+            Product category identification number. Foreign key to ProductCategory.ProductCategoryID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductSubCategory.Name">
+            <summary>
+            Subcategory description.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductSubCategory.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.ProductSubCategory.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.PurchaseOrderId">
+            <summary>
+            Primary key. Foreign key to PurchaseOrderHeader.PurchaseOrderID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.PurchaseOrderDetailId">
+            <summary>
+            Primary key. One line number per purchased product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.DueDate">
+            <summary>
+            Date the product is expected to be received.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.OrderQty">
+            <summary>
+            Quantity ordered.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.ProductId">
+            <summary>
+            Product identification number. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.UnitPrice">
+            <summary>
+            Vendor&apos;s selling price of a single product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.LineTotal">
+            <summary>
+            Per product subtotal. Computed as OrderQty * UnitPrice.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.ReceivedQty">
+            <summary>
+            Quantity actually received from the vendor.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.RejectedQty">
+            <summary>
+            Quantity rejected during inspection.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.StockedQty">
+            <summary>
+            Quantity accepted into inventory. Computed as ReceivedQty - RejectedQty.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderDetail.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.Id">
+            <summary>
+            Primary key.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.RevisionNumber">
+            <summary>
+            Incremental number to track changes to the purchase order over time.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.Status">
+            <summary>
+            Order current status. 1 = Pending; 2 = Approved; 3 = Rejected; 4 = Complete
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.EmployeeId">
+            <summary>
+            Employee who created the purchase order. Foreign key to Employee.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.VendorId">
+            <summary>
+            Vendor with whom the purchase order is placed. Foreign key to Vendor.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.ShipMethodId">
+            <summary>
+            Shipping method. Foreign key to ShipMethod.ShipMethodID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.OrderDate">
+            <summary>
+            Purchase order creation date.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.ShipDate">
+            <summary>
+            Estimated shipment date from the vendor.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.SubTotal">
+            <summary>
+            Purchase order subtotal. Computed as SUM(PurchaseOrderDetail.LineTotal)for the appropriate PurchaseOrderID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.TaxAmt">
+            <summary>
+            Tax amount.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.Freight">
+            <summary>
+            Shipping cost.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.TotalDue">
+            <summary>
+            Total due to vendor. Computed as Subtotal + TaxAmt + Freight.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.PurchaseOrderHeader.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderDetail.SalesOrderId">
+            <summary>
+            Primary key. Foreign key to SalesOrderHeader.SalesOrderID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderDetail.SalesOrderDetailId">
+            <summary>
+            Primary key. One incremental unique number per product sold.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderDetail.CarrierTrackingNumber">
+            <summary>
+            Shipment tracking number supplied by the shipper.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderDetail.OrderQty">
+            <summary>
+            Quantity ordered per product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderDetail.ProductId">
+            <summary>
+            Product sold to customer. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderDetail.SpecialOfferId">
+            <summary>
+            Promotional code. Foreign key to SpecialOffer.SpecialOfferID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderDetail.UnitPrice">
+            <summary>
+            Selling price of a single product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderDetail.UnitPriceDiscount">
+            <summary>
+            Discount amount.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderDetail.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderDetail.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.Id">
+            <summary>
+            Primary key.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.RevisionNumber">
+            <summary>
+            Incremental number to track changes to the sales order over time.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.OrderDate">
+            <summary>
+            Dates the sales order was created.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.DueDate">
+            <summary>
+            Date the order is due to the customer.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.ShipDate">
+            <summary>
+            Date the order was shipped to the customer.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.Status">
+            <summary>
+            Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.OnlineOrderFlag">
+            <summary>
+            0 = Order placed by sales person. 1 = Order placed online by customer.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.SalesOrderNumber">
+            <summary>
+            Unique sales order identification number.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.PurchaseOrderNumber">
+            <summary>
+            Customer purchase order number reference. 
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.AccountNumber">
+            <summary>
+            Financial accounting number reference.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.CustomerCode">
+            <summary>
+            Customer identification number. Foreign key to Customer.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.SalesPersonId">
+            <summary>
+            Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.TerritoryId">
+            <summary>
+            Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.BillToAddress">
+            <summary>
+            Customer billing address. Foreign key to Address.AddressID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.ShipToAddress">
+            <summary>
+            Customer shipping address. Foreign key to Address.AddressID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.ShipMethodId">
+            <summary>
+            Shipping method. Foreign key to ShipMethod.ShipMethodID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.CreditCardId">
+            <summary>
+            Credit card identification number. Foreign key to CreditCard.CreditCardID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.CreditCardApprovalCode">
+            <summary>
+            Approval code provided by the credit card company.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.CurrencyRateId">
+            <summary>
+            Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.SubTotal">
+            <summary>
+            Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.TaxAmt">
+            <summary>
+            Tax amount.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.Freight">
+            <summary>
+            Shipping cost.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.TotalDue">
+            <summary>
+            Total due from customer. Computed as Subtotal + TaxAmt + Freight.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.Note">
+            <summary>
+            Sales representative comments.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.SalesOrderHeader.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:API_CRM.Models.EntityClass.Source">
+            <summary>
+            nguồn khách hàng ( giới thiệu, hội thảo, internet ...)
+            
+            </summary>
+        </member>
+        <member name="T:API_CRM.Models.EntityClass.StateProvince">
+            <summary>
+            State and province lookup table.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.StateProvince.Id">
+            <summary>
+            Primary key for StateProvince records.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.StateProvince.StateProvinceCode">
+            <summary>
+            ISO standard state or province code.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.StateProvince.CountryRegionCode">
+            <summary>
+            ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode. 
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.StateProvince.IsOnlyStateProvinceFlag">
+            <summary>
+            0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.StateProvince.Name">
+            <summary>
+            State or province description.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.StateProvince.TerritoryId">
+            <summary>
+            ID of the territory in which the state or province is located. Foreign key to SalesTerritory.SalesTerritoryID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.StateProvince.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.StateProvince.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:API_CRM.Models.EntityClass.StatusCustomer">
+            <summary>
+            trạng thái khách hàng (mới, tiếp cận, quan tâm ...)
+            
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.UnitMeasure.UnitMeasureCode">
+            <summary>
+            Primary key.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.UnitMeasure.Name">
+            <summary>
+            Unit of measure description.
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.UnitMeasure.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="T:API_CRM.Models.EntityClass.User">
+            <summary>
+            User Listing
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Vendor.Direction">
+            <summary>
+            quản lý
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Vendor.CertificateOfLiability">
+            <summary>
+            giấy chứng nhận pháp lý
+            </summary>
+        </member>
+        <member name="P:API_CRM.Models.EntityClass.Vendor.CertificateOfLiabilityExp">
+            <summary>
+            ngày hết hạn giấy chứng nhận pháp lý
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.Id">
+            <summary>
+            Primary key for Product records.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.Name">
+            <summary>
+            Name of the product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.ProductNumber">
+            <summary>
+            Unique product identification number.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.MakeFlag">
+            <summary>
+            0 = Product is purchased, 1 = Product is manufactured in-house.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.FinishedGoodsFlag">
+            <summary>
+            0 = Product is not a salable item. 1 = Product is salable.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.Color">
+            <summary>
+            Product color.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.SafetyStockLevel">
+            <summary>
+            Minimum inventory quantity. 
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.ReorderPoint">
+            <summary>
+            Inventory level that triggers a purchase order or work order. 
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.StandardCost">
+            <summary>
+            Standard cost of the product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.ListPrice">
+            <summary>
+            Selling price.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.Size">
+            <summary>
+            Product size.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.SizeUnitMeasureCode">
+            <summary>
+            Unit of measure for Size column.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.WeightUnitMeasureCode">
+            <summary>
+            Unit of measure for Weight column.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.Weight">
+            <summary>
+            Product weight.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.DaysToManufacture">
+            <summary>
+            Number of days required to manufacture the product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.ProductLine">
+            <summary>
+            R = Road, M = Mountain, T = Touring, S = Standard
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.Class">
+            <summary>
+            H = High, M = Medium, L = Low
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.Style">
+            <summary>
+            W = Womens, M = Mens, U = Universal
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.ProductSubcategoryId">
+            <summary>
+            Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID. 
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.ProductModelId">
+            <summary>
+            Product is a member of this product model. Foreign key to ProductModel.ProductModelID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.SellStartDate">
+            <summary>
+            Date the product was available for sale.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.SellEndDate">
+            <summary>
+            Date the product was no longer available for sale.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.DiscontinuedDate">
+            <summary>
+            Date the product was discontinued.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.Products.ProductViewModel.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderDetailModel.SalesOrderId">
+            <summary>
+            Primary key. Foreign key to SalesOrderHeader.SalesOrderID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderDetailModel.SalesOrderDetailId">
+            <summary>
+            Primary key. One incremental unique number per product sold.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderDetailModel.CarrierTrackingNumber">
+            <summary>
+            Shipment tracking number supplied by the shipper.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderDetailModel.OrderQty">
+            <summary>
+            Quantity ordered per product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderDetailModel.ProductId">
+            <summary>
+            Product sold to customer. Foreign key to Product.ProductID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderDetailModel.SpecialOfferId">
+            <summary>
+            Promotional code. Foreign key to SpecialOffer.SpecialOfferID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderDetailModel.UnitPrice">
+            <summary>
+            Selling price of a single product.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderDetailModel.UnitPriceDiscount">
+            <summary>
+            Discount amount.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderDetailModel.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.Id">
+            <summary>
+            Primary key.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.RevisionNumber">
+            <summary>
+            Incremental number to track changes to the sales order over time.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.OrderDate">
+            <summary>
+            Dates the sales order was created.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.DueDate">
+            <summary>
+            Date the order is due to the customer.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.ShipDate">
+            <summary>
+            Date the order was shipped to the customer.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.Status">
+            <summary>
+            Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Cancelled
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.OnlineOrderFlag">
+            <summary>
+            0 = Order placed by sales person. 1 = Order placed online by customer.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.SalesOrderNumber">
+            <summary>
+            Unique sales order identification number.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.PurchaseOrderNumber">
+            <summary>
+            Customer purchase order number reference. 
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.AccountNumber">
+            <summary>
+            Financial accounting number reference.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.CustomerCode">
+            <summary>
+            Customer identification number. Foreign key to Customer.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.SalesPersonId">
+            <summary>
+            Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.TerritoryId">
+            <summary>
+            Territory in which the sale was made. Foreign key to SalesTerritory.SalesTerritoryID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.BillToAddress">
+            <summary>
+            Customer billing address. Foreign key to Address.AddressID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.ShipToAddress">
+            <summary>
+            Customer shipping address. Foreign key to Address.AddressID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.ShipMethodId">
+            <summary>
+            Shipping method. Foreign key to ShipMethod.ShipMethodID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.CreditCardId">
+            <summary>
+            Credit card identification number. Foreign key to CreditCard.CreditCardID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.CreditCardApprovalCode">
+            <summary>
+            Approval code provided by the credit card company.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.CurrencyRateId">
+            <summary>
+            Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.SubTotal">
+            <summary>
+            Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.TaxAmt">
+            <summary>
+            Tax amount.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.Freight">
+            <summary>
+            Shipping cost.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.TotalDue">
+            <summary>
+            Total due from customer. Computed as Subtotal + TaxAmt + Freight.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.Note">
+            <summary>
+            Sales representative comments.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.Rowguid">
+            <summary>
+            ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            </summary>
+        </member>
+        <member name="P:API_CRM.ViewModels.SaleOrders.SalesOrderHeaderModel.ModifiedDate">
+            <summary>
+            Date and time the record was last updated.
+            </summary>
+        </member>
+    </members>
+</doc>
