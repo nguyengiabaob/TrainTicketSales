@@ -28,12 +28,23 @@ namespace TrainTicketSales.Controllers
 
         // GET: api/Schedules
         [HttpGet("GetTrain")]
-        public async Task<ScheduleViewModel> GetSchedule(long StationBegin, long StationEnd, DateTime date)
+        public async Task<IEnumerable<ScheduleViewModel>> GetSchedule(long StationBegin, long StationEnd, DateTime date)
         {
-            List<TrainViewModel> TrainList = new List<TrainViewModel>();
+            List<ScheduleViewModel> schedules = new List<ScheduleViewModel>();
+            
             var val = await _context.Schedule.Where(x => x.BeginStationId == StationBegin && x.EndStationId == StationEnd && x.DateBegin == date).ToListAsync();
             foreach (var item in val)
             {
+                List<TrainViewModel> TrainList = new List<TrainViewModel>();
+                var scheduleViewModel = new ScheduleViewModel();
+
+                scheduleViewModel.Id = item.Id;
+                scheduleViewModel.DateBegin = item.DateBegin;
+                scheduleViewModel.DateEnd = item.DateEnd;
+                scheduleViewModel.BeginStationId = item.BeginStationId;
+                scheduleViewModel.EndStationId = item.EndStationId;
+                scheduleViewModel.TrainCode = item.TrainCode;
+
                 var train = _context.Train.Where(x => x.Code == item.TrainCode).Include(x => x.Cabin).ToList()[0];
                 TrainViewModel trainModel = new TrainViewModel();
                 trainModel.Code = train.Code;
@@ -41,11 +52,14 @@ namespace TrainTicketSales.Controllers
                 trainModel.Des = train.Des;
                 var parameters = new DynamicParameters();
                 parameters.Add("@trainCode", train.Code);
-                trainModel.Cabin = _dapper.GetMultiByStoreProcedure<CabinViewModel>("Cabin_GetByTrain", parameters, commandType: CommandType.StoredProcedure);                 
+                trainModel.Cabin = _dapper.GetMultiByStoreProcedure<CabinViewModel>("Cabin_GetByTrain", parameters, commandType: CommandType.StoredProcedure);
                 TrainList.Add(trainModel);
+                scheduleViewModel.TrainsList=TrainList;
+
+                schedules.Add(scheduleViewModel);
             }
             //var result = JsonConvert.DeserializeObject<IEnumerable<ScheduleViewModel>>(JsonConvert.SerializeObject(val));
-            return new ScheduleViewModel() { TrainsList = TrainList };
+            return schedules;
         }
 
         // GET: api/Schedules/5
