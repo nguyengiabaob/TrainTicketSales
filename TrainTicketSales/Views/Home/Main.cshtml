@@ -1,11 +1,14 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
     ViewData["Title"] = "Home ";
 }
-
+    <script src="~/JSProject/Main.js"></script>
     <div class="row et-content">
         <div class="col-xs-12 col-sm-9 et-col-md-9">
-            <div class="row et-page-header" style="margin-bottom: 40px;">
+            <div class="showtrain">
+
+            </div>
+            @*<div class="row et-page-header" style="margin-bottom: 40px;">
                 <span class="et-main-label">
                     ngày 02/02/2022 từ Hà Nội đến Sài Gòn
                 </span>
@@ -167,12 +170,12 @@
                     <div class="et-col-5">
                         <div class="et-car-previous-floor text-center">&lt;</div>
                     </div>
-                    <div class="et-col-90">
+                    <div class="et-col-90">*@
                         <!-- <div class="et-full-width et-car-loading">
                             <div class="row text-capitalize text-center"><img src="/images/loading51.gif" style="width: 20px; height: 20px"></div>
                             <div class="row text-center"><span>Đang tải thông tin toa</span></div>
                         </div> -->
-                        <div class=" et-car-floor">
+                        @*<div class=" et-car-floor">
                             <div class="et-car-door"></div>
                             <div class="et-car-nm-64-half-block">
                                 <div class="et-full-width">
@@ -287,7 +290,7 @@
                         <div class="et-car-next-floor text-center">&gt;</div>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <div class="et-col-md-12 table-bordered list-ticket-deskhop" style="margin-top: 20px; padding: 5px">
                 <div class="et-col-md-12">
                     <div class="et-col-md-4 et-no-padding">
@@ -508,16 +511,3 @@
             </div>
         </div>
     </div>
-@section Script {
-    <script>
-        $(function () {
-            $('#datetimepicker1').datetimepicker({
-                format: "DD/MM/YYYY",
-                date: new Date()
-            });
-            $('#datetimepicker').datetimepicker({
-                format: "DD/MM/YYYY"
-            });
-        });
-    </script>
-}

@@ -838,6 +838,9 @@ h5 {
     .mobile-card .col-xs-9 {
         width: 75% !important
     }
+    .et-train-head {
+        width: 126px !important;
+    }
 }
 @media (min-width: 576px) {
     .container {
@@ -884,6 +887,96 @@ h5 {
     }
 .style-menu .nav-item {
     color: white;
+}
+.et-train-head-selected {
+    background-color: #0091d4;
+}
+.et-train-block:hover .et-train-lamp, .et-train-block:hover .et-train-lamp-bellow-left, .et-train-block:hover .et-train-lamp-bellow-right {
+    background-color: #fec306;
+}
+.ListCabin
+{
+    display: flex;
+    white-space : nowrap;
+    overflow-x:auto
+}
+.et-bed-way {
+    height: 40px;
+    line-height: 40px;
+}
+.et-col-1-18 {
+    width: 6.55555556%;
+    float: left;
+    min-height: 1px;
+}
+.et-car-floor-full-height {
+    height: 158px;
+}
+.et-col-1-16 {
+    width: 6.25%;
+    float: left;
+    min-height: 1px;
+}
+.et-bed-left {
+    border-left: 3px solid #385d8a;
+    height: 40px;
+}
+.et-bed-right {
+    border-right: 3px solid #385d8a;
+    height: 40px;
+}
+.et-bed-right .et-bed-outer {
+    padding-left: 2px;
+    padding-top: 3px;
+    padding-bottom: 10px;
+    height: 100%;
+}
+.et-bed-left .et-bed-outer {
+    padding-right: 2px;
+    padding-top: 3px;
+    padding-bottom: 10px;
+    height: 100%;
+}
+.et-text-sm {
+    font-size: 8px;
+}
+.et-col-8-9 {
+    width: 86.88888889%;
+    float: left;
+    min-height: 1px;
+}
+.et-col-1-8 {
+    width: 12.5%;
+    float: left;
+    min-height: 1px;
+}
+.fade.show {
+    opacity: 1
+}
+.popover{
+    font-size:14px !important;
+    margin-bottom:16px !important
+}
+.popover-header {
+    font-size: 16px !important
+}
+.arrow {
+    margin-bottom: -15px !important;
+    margin-left:-6px !important;
+}
+.bs-popover-auto[x-placement^=top] > .arrow::before, .bs-popover-top > .arrow::before {
+   
+    border-width: 0.8rem 0.8rem 0 !important;
+    
+}
+.bs-popover-auto[x-placement^=top] > .arrow::after, .bs-popover-top > .arrow::after {
+    bottom: 1px;
+    border-width: 0.8rem 0.8rem 0;
+    border-top-color: #fff;
+}
+.row.et-content
+{
+    width:100%
 }
 
 
