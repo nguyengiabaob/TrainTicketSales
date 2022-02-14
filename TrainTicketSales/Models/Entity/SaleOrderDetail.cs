@@ -12,8 +12,9 @@ namespace TrainTicketSales.Models.Entity
         public string Name { get; set; }
         public string IdentityCard { get; set; }
         public bool? Adult { get; set; }
-        public string SeatId { get; set; }
+        public long? SeatDetailId { get; set; }
 
         public virtual SaleOrder SaleOrder { get; set; }
+        public virtual SeatDetail SeatDetail { get; set; }
     }
 }

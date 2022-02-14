@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
@@ -32,7 +34,9 @@ namespace TrainTicketSales
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DsvnContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddTransient<IDapper,TrainTicketSales.Helpers.Dapper>();
+            services.AddTransient<IDapper, TrainTicketSales.Helpers.Dapper>();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             // Enable CORS
             services.AddCors(options =>
             {
@@ -96,12 +100,13 @@ namespace TrainTicketSales
 
                 //Set the comments path for the Swagger JSON and UI.
 
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
-            });           
+                //var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                //var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                //c.IncludeXmlComments(xmlPath);
+            });
             services.AddControllersWithViews();
             services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            
         }
 
 
@@ -139,10 +144,17 @@ namespace TrainTicketSales
 
             app.UseEndpoints(endpoints =>
             {
+                        endpoints.MapAreaControllerRoute(
+            name: "MyAreaProducts",
+            areaName: "Admin",
+            pattern: "Admin/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+          
         }
     }
 }
