@@ -7,12 +7,22 @@ namespace TrainTicketSales.Models.Entity
 {
     public partial class SeatDetail
     {
+        public SeatDetail()
+        {
+            SaleOrderDetail = new HashSet<SaleOrderDetail>();
+        }
+
+        public long Id { get; set; }
         public long ScheduleId { get; set; }
         public long SeatId { get; set; }
         public long? Price { get; set; }
-        public bool? Status { get; set; }
+        /// <summary>
+        /// 0: trống, 1: đã thanh toán, 2: đang giữ chỗ
+        /// </summary>
+        public int? Status { get; set; }
 
         public virtual Schedule Schedule { get; set; }
         public virtual Seat Seat { get; set; }
+        public virtual ICollection<SaleOrderDetail> SaleOrderDetail { get; set; }
     }
 }

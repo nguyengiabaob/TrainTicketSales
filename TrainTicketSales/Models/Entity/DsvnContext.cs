@@ -80,6 +80,8 @@ namespace TrainTicketSales.Models.Entity
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.Code).HasMaxLength(50);
+
                 entity.Property(e => e.Email).HasMaxLength(50);
 
                 entity.Property(e => e.IdentityCard).HasMaxLength(50);
@@ -89,6 +91,8 @@ namespace TrainTicketSales.Models.Entity
                 entity.Property(e => e.OrderDate).HasColumnType("datetime");
 
                 entity.Property(e => e.PhoneNumber).HasMaxLength(50);
+
+                entity.Property(e => e.Status).HasComment("1: đặt mua; 2: chấp nhận bán; 3: trả tiền; 4: xác nhận nhận tiền, 5:  giao vé, 6: hoãn, 7: đổi chuyển");
             });
 
             modelBuilder.Entity<SaleOrderDetail>(entity =>
@@ -99,15 +103,17 @@ namespace TrainTicketSales.Models.Entity
 
                 entity.Property(e => e.Name).HasMaxLength(250);
 
-                entity.Property(e => e.SeatId)
-                    .HasMaxLength(10)
-                    .HasColumnName("SeatID")
-                    .IsFixedLength(true);
+                entity.Property(e => e.SeatDetailId).HasColumnName("SeatDetailID");
 
                 entity.HasOne(d => d.SaleOrder)
                     .WithMany(p => p.SaleOrderDetail)
                     .HasForeignKey(d => d.SaleOrderId)
                     .HasConstraintName("FK_SaleOrderDetail_SaleOrder");
+
+                entity.HasOne(d => d.SeatDetail)
+                    .WithMany(p => p.SaleOrderDetail)
+                    .HasForeignKey(d => d.SeatDetailId)
+                    .HasConstraintName("FK_SaleOrderDetail_SeatDetail");
             });
 
             modelBuilder.Entity<Schedule>(entity =>
@@ -178,11 +184,13 @@ namespace TrainTicketSales.Models.Entity
 
             modelBuilder.Entity<SeatDetail>(entity =>
             {
-                entity.HasKey(e => new { e.ScheduleId, e.SeatId });
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.ScheduleId).HasColumnName("ScheduleID");
 
                 entity.Property(e => e.SeatId).HasColumnName("SeatID");
+
+                entity.Property(e => e.Status).HasComment("0: trống, 1: đã thanh toán, 2: đang giữ chỗ");
 
                 entity.HasOne(d => d.Schedule)
                     .WithMany(p => p.SeatDetail)

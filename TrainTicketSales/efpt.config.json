@@ -62,12 +62,13 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "RDSVRTEST2019.dsvn",
+   "UiHint": "RDSVRTEST2019.DSVN",
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
    "UseDbContextSplitting": false,
    "UseFluentApiOnly": true,
    "UseHandleBars": false,
+   "UseHierarchyId": false,
    "UseInflector": false,
    "UseLegacyPluralizer": false,
    "UseManyToManyEntity": false,

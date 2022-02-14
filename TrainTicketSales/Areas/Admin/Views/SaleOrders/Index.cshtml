@@ -1,0 +1,173 @@
+﻿@model IEnumerable<TrainTicketSales.Models.Entity.SaleOrder>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Danh sách đặt vé</h1>
+<div class="card card-body">
+    <div class="table-responsive">
+        <table id="dtBasicExample" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Code)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrderDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IdentityCard)
+                    </th>
+                    <th>
+                        Total
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @* @foreach (var item in Model) {
+                    <tr>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.IdentityCard)
+                    </td>
+                    <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a href="@Url.Action("Details", "SaleOrders", new {id =@item.Id,saleOrder=@item})"> Details</a>
+                    <a href="@Url.Action("Edit", "SaleOrders", new {id =@item.Id})"> Clients</a>
+
+                    </td>
+                    </tr>
+                    }*@
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Script{
+<script>
+                var table = null;
+                var BaoCao = (function () {
+        return {
+            renderDatatable: function () {
+                if (table) {
+                    table.destroy();
+                }
+
+                 table = $('#dtBasicExample').DataTable({
+                    pageLength: 25,
+                    order: [0, 'asc'],
+                    ajax: {
+                        url: '/Admin/SaleOrders/Index1',
+
+                        dataSrc: function (res) {
+                            if(res.status)
+                            {
+                            console.log(res.result);
+                            return res.result;
+                            }
+                            else
+                            {
+                                return "";
+                            }
+                        }
+                        //dataSrc: ""
+                    },
+                    columns: [
+                        {
+                            "title": "STT",
+                            "width": "5%",
+                            "data": null,
+                        },
+                        //{
+                        //    "title": "Mã đặt vé",
+                        //    "data": "code",
+                        //},
+                        {
+                            "title": "Tên người đặt",
+                            "data": null,
+                            "mRender": function (data, type, full) {
+                                //return `<span class="font-weight-bold">${data.name}</span>`;
+                                return `<a href="${data.actionLink}"><span class="font-weight-bold">${data.name}</span></a> `;
+                            }
+                        },
+                        {
+                            "title": "Mã đặt vé",
+                            "data": "code",
+                        },
+                        {
+                            "title": "Trạng thái",
+                            "data": "status",
+                        },
+                        {
+                            "title": "Ngày đặt vé",
+                            "data": "orderDate",
+                        },
+                        {
+                            "title": "Số điện thoại",
+                            "data": "phoneNumber",
+                        },
+                        {
+                            "title": "Email",
+                            "data": "email",
+                        },
+                        {
+                            "title": "CMND",
+                            "data": "identityCard",
+                        },
+                        {
+                            "title": "Tổng tiền",
+                            "data": "total",
+                        },
+                        //{
+                        //    "title": "",
+                        //    "data": "",
+                        //},
+                    ]
+                });
+                table.on('order.dt search.dt', function () {
+                    table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                        cell.innerHTML = i + 1;
+                    });
+                }).draw();
+
+                $('.dataTables_length').addClass('bs-select');
+            },
+            //triggerControls: () => {
+            //    $("#loctheonam").on('change', function () {
+            //        year = $(this).val();
+            //        BaoCao.renderDatatable(year);
+            //    })
+            //},
+        }
+    })();
+    BaoCao.renderDatatable();
+    //BaoCao.triggerControls();
+</script>
+}
