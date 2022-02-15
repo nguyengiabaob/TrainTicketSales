@@ -69,48 +69,52 @@
     <div class="row">
         
         <div class="col-xs-12 col-sm-4 et-col-md-3">
-            <div class="col-md-12 et-widget" style="margin-bottom: 5px;">
-                <div class="row et-widget-header">
-                    <img style="height:10px" src="./Images/widgetIcon.png" />
-                    <span>Thông tinh hành trình</span>
-                </div>
-                <div class="form-group style-title2">
-                    <h6 class="ng-binding">Ga đi</h6>
-                    <span class="control-label ng-binding ng-hide" ng-show="gaDiError">Ga đi không hợp lệ</span>
-                    <input type="text" class="form-control input-sm">
-                </div>
-                <div class="form-group style-title2">
-                    <h6 class="ng-binding">Ga về</h6>
-                    <span class="control-label ng-binding ng-hide" ng-show="gaDiError">Ga đi không hợp lệ</span>
-                    <input type="text" class="form-control input-sm">
-                </div>
-                <div class="et-direct-block">
-                    <input type="radio" value="0" name="oneWay">
-                    <span>Một chiều</span>
-                    <input type="radio" value="0" name="oneWay">
-                    <span>khứ hồi</span>
-                </div>
-                <div class="form-group style-title2">
-                    <h6 class="ng-binding">Ngày đi</h6>
-                    <span class="control-label ng-binding ng-hide" ng-show="gaDiError">Ga đi không hợp lệ</span>
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type="text" class="form-control input-sm">
-                        <span class="input-group-addon" style="display: flex; justify-content: center; align-items: center;">
-                            <span class="fa fa-calendar"></span>
-                        </span>
+            <div class="col-md-12 et-widget" style="margin-bottom: 5px;" >
+                <form id="formSearch">
+                    <div class="row et-widget-header">
+                        <img style="height:10px" src="./Images/widgetIcon.png" />
+                        <span>Thông tinh hành trình</span>
+                    </div>
+                    <div class="form-group style-title2">
+                        <h6 class="ng-binding">Ga đi</h6>
+                        <span id="errornameA"></span>
+                        <input id="StartingStation" name="nameA" type="text" class="form-control input-sm">
 
                     </div>
-                </div>
-                <div class="form-group style-title2">
-                    <h6 class="ng-binding">Ngày đi</h6>
-                    <span class="control-label ng-binding ng-hide" ng-show="gaDiError">Ga đi không hợp lệ</span>
-                    <div class='input-group date' id='datetimepicker'>
-                        <input type="text" class="form-control input-sm">
-                        <span class="input-group-addon" style="display: flex; justify-content: center; align-items: center;">
-                            <span><i class="fa fa-calendar"></i></span>
-                        </span>
+                    <div class="form-group style-title2">
+                        <h6 class="ng-binding">Ga về</h6>
+                        <span id="errornameB"></span>
+                        <input id="stops" name="nameB" type="text" class="form-control input-sm">
+
                     </div>
-                </div>
+                    <div class="et-direct-block">
+                        <input type="radio" value="0" name="oneWay">
+                        <span>Một chiều</span>
+                        <input type="radio" value="1" name="oneWay">
+                        <span>khứ hồi</span>
+                    </div>
+                    <div class="form-group style-title2">
+                        <h6 class="ng-binding">Ngày đi</h6>
+                        <span id="errordateA"></span>
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type="text" name="dateA" class="form-control input-sm" >
+                            <span class="input-group-addon" style="display: flex; justify-content: center; align-items: center;">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="form-group style-title2">
+                        <h6 class="ng-binding">Ngày về</h6>
+                        <span id="errordateB"></span>
+                        <div class='input-group date' id='datetimepicker'>
+                            <input type="text" name="dateB" class="form-control input-sm" >
+                            <span class="input-group-addon" style="display: flex; justify-content: center; align-items: center;">
+                                <span><i class="fa fa-calendar"></i></span>
+                            </span>
+                        </div>
+                    </div>
+                </form>
                 <div class="  col-md-12 text-center" style="margin-top: 2px;">
                     <a id="btn-search-main" class="btn btn-sm et-btn ">Tìm kiếm</a>
                 </div>
@@ -152,14 +156,5 @@
         }
       }
     }
-        $(function () {
-            $('#datetimepicker1').datetimepicker({
-                format: "DD/MM/YYYY",
-                date: new Date()
-            });
-            $('#datetimepicker').datetimepicker({
-                format: "DD/MM/YYYY"
-            });
-        });
 </script>
 }

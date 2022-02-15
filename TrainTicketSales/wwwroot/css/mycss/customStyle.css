@@ -955,28 +955,55 @@ h5 {
 }
 .popover{
     font-size:14px !important;
-    margin-bottom:16px !important
+    margin-bottom: 1px !important
 }
 .popover-header {
-    font-size: 16px !important
+   /* font-size: 16px !important*/
 }
-.arrow {
-    margin-bottom: -15px !important;
-    margin-left:-6px !important;
-}
-.bs-popover-auto[x-placement^=top] > .arrow::before, .bs-popover-top > .arrow::before {
-   
-    border-width: 0.8rem 0.8rem 0 !important;
-    
-}
-.bs-popover-auto[x-placement^=top] > .arrow::after, .bs-popover-top > .arrow::after {
-    bottom: 1px;
-    border-width: 0.8rem 0.8rem 0;
-    border-top-color: #fff;
+.popover .arrow {
+    display: none !important
 }
 .row.et-content
 {
     width:100%
+}
+@media screen and (min-width:1200px)
+{
+    .navbar-collapse{
+        position:absolute;
+        left:12%
+    }
+}
+@media screen and (max-width:1199px) {
+    .navbar-collapse {
+        position: absolute;
+        left: 5%
+    }
+}
+.container.et-banner.row
+{
+    margin-right:auto;
+    margin-left: auto;
+    width: 750px
+}
+.errorvalidate {
+    border: 2px solid #b94a48 !important
+}
+.Error3, .Error2, .Error1
+{
+    display: none;
+}
+.error {
+    color: #b94a48;
+    font-size: 14px;
+    font-weight: normal !important
+}
+.typeahead {
+    width: auto !important;
+    font-size:15px !important
+}
+.form-control[readonly] {
+    background-color: #fff !important;
 }
 
 

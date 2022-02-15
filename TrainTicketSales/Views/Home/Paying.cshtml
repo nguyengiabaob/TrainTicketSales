@@ -13,10 +13,10 @@
                     <img class="img-inactive" src="https://dsvn.vn/images/activeStep.png" alt="">
                     <img src="https://dsvn.vn/images/inActiveStep.png" alt="">
                 </div>
-                <div class="et-col-md-3 text-center">
+                @*<div class="et-col-md-3 text-center">
                     <img class="img-inactive" src="https://dsvn.vn/images/activeStep.png" alt="">
                     <img src="https://dsvn.vn/images/inActiveStep.png" alt="">
-                </div>
+                </div>*@
                 <div class="et-col-md-3 text-center">
                     <img class="img-inactive" src="https://dsvn.vn/images/activeStep.png" alt="">
                     <img src="https://dsvn.vn/images/inActiveStep.png" alt="">
@@ -33,11 +33,11 @@
                         xác nhận thông tin
                     </span>
                 </div>
-                <div class="et-col-md-3 text-center">
+                @*<div class="et-col-md-3 text-center">
                     <span>
                         Thanh toán
                     </span>
-                </div>
+                </div>*@
                 <div class="et-col-md-3 text-center">
                     <span>
                         Hoàn tất
@@ -51,7 +51,7 @@
                 @*Nhập thông tin kh*@
                 <div class="step-container">
                     <div class="et-page-header">
-                        <span class="et-main-label" style="float:left">THÔNG TIN VÉ</span>
+                        <span class="et-main-label" style="float:left">THÔNG TIN GIỎ VÉ</span>
                     </div>
                     <div class=" style-alert">
                         <div class="alert alert-info">
@@ -67,14 +67,15 @@
                             </p>
                         </div>
                     </div>
+                    @*//responsive-mobile*@
                     <div>
-                        <div class="component-mobile "> 
+                        <div class="component-mobile ">
 
                             <div class="card">
                                 <div class="card-title my-card-title">
                                     Chiều đi
                                 </div>
-                                
+
                                 <div class="card-body mobile-card">
 
 
@@ -111,212 +112,212 @@
                                             </span>
                                         </div>
                                         <div>
-                                            - Thành tiền (VND) : 
+                                            - Thành tiền (VND) :
                                             <span class="text-info-ticket ">
-                                                1,033,000 
+                                                1,033,000
                                             </span>
                                             VND
                                         </div>
                                     </div>
-                                        <div class="col-xs-2 col-sm-2">
-                                            <div>
-                                                <img src="~/Images/waring20.png" />
+                                    <div class="col-xs-2 col-sm-2">
+                                        <div>
+                                            <img src="~/Images/waring20.png" />
+                                        </div>
+                                        <div>
+                                            <a class="et-btn-cancel">
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top:50px">
+                                        <div class="col-xs-3 col-sm-3">
+                                            <div style="margin-bottom:15px">
+                                                <span class="text-left" style="border-radius: 3px; font-size: 13px;"> Họ Tên</span>
+                                            </div>
+
+                                            <div style="margin-bottom:15px">
+                                                <span class="  text-left " style="border-radius: 3px; font-size: 13px;">đối tượng</span>
                                             </div>
                                             <div>
-                                                <a class="et-btn-cancel">
-
-                                                </a>
+                                                <span class=" text-left" style="border-radius: 3px; font-size: 13px;">Số giấy tờ</span>
                                             </div>
                                         </div>
-                                        <div style="margin-top:50px">
-                                            <div class="col-xs-3 col-sm-3">
-                                                <div style="margin-bottom:15px">
-                                                    <span class="text-left" style="border-radius: 3px; font-size: 13px;"> Họ Tên</span>
-                                                </div >
-
-                                                <div style="margin-bottom:15px">
-                                                    <span class="  text-left " style="border-radius: 3px; font-size: 13px;">đối tượng</span>
-                                                </div>
-                                                <div>
-                                                    <span class=" text-left" style="border-radius: 3px; font-size: 13px;">Số giấy tờ</span>
-                                                </div>
+                                        <div class="col-xs-9 col-sm-9">
+                                            <div style="margin-bottom:15px">
+                                                <input type="text" placeholder="Thông tin hành khách" class="form-control" />
                                             </div>
-                                            <div class="col-xs-9 col-sm-9">
-                                                <div style="margin-bottom:15px">
-                                                    <input type="text" placeholder="Thông tin hành khách" class="form-control" />
-                                                </div>
-                                                <div style="margin-bottom:15px">
-                                                    <select class="form-control">
-                                                        <optgroup label="Người Việt Nam">
-                                                            <option value="0" selected="selected" label="Người lớn">Người lớn</option>
-                                                            <option value="1" label="Trẻ em">Trẻ em</option>
-                                                            <option value="3" label="Người cao tuổi">Người cao tuổi</option>
-                                                        </optgroup>
-                                                        <optgroup label="Người nước ngoài">
-                                                            <option value="0" selected="selected" label="Người lớn">Người lớn</option>
-                                                            <option value="1" label="Trẻ em">Trẻ em</option>
-                                                            <option value="3" label="Người cao tuổi">Người cao tuổi</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div>
+                                            <div style="margin-bottom:15px">
+                                                <select class="form-control">
+                                                    <optgroup label="Người Việt Nam">
+                                                        <option value="0" selected="selected" label="Người lớn">Người lớn</option>
+                                                        <option value="1" label="Trẻ em">Trẻ em</option>
+                                                        <option value="3" label="Người cao tuổi">Người cao tuổi</option>
+                                                    </optgroup>
+                                                    <optgroup label="Người nước ngoài">
+                                                        <option value="0" selected="selected" label="Người lớn">Người lớn</option>
+                                                        <option value="1" label="Trẻ em">Trẻ em</option>
+                                                        <option value="3" label="Người cao tuổi">Người cao tuổi</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                            <div>
 
 
-                                                    <input type="text" placeholder="Số CMND/ Hộ chiếu/ Ngày tháng năm sinh trẻ em" class="form-control" />
-                                                </div>
+                                                <input type="text" placeholder="Số CMND/ Hộ chiếu/ Ngày tháng năm sinh trẻ em" class="form-control" />
                                             </div>
-                                            </div>
-                                      </div> 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                 @*//responsive-mobile*@
+                    <table class="tb-paying table table-bordered">
+                        <thead class="et-table-header">
+                            <tr>
+                                <th class="bg-table" style="width:25%">
+                                    Họ tên
+                                </th>
+                                <th class="bg-table" style="width:20%">
+                                    Thông tin chỗ
+                                </th>
+                                <th class="bg-table" style="width:10%">
+                                    Giá vé
+                                </th>
+                                <th class="bg-table" style="width:5%">
+                                    Giảm đối tượng
+                                </th>
+                                <th class="bg-table" style="width:10%">
+                                    khuyến mại
+                                </th>
+                                <th class="bg-table" style="width:5%">
+                                    Bảo hiểm
+                                </th>
+                                <th class="bg-table" style="width:20%">
+                                    Thành tiền (VNĐ)
+                                </th>
+                                <th class="bg-table" style="width:5%">
 
-                        <table class="tb-paying table table-bordered">
-                            <thead class="et-table-header">
-                                <tr>
-                                    <th class="bg-table" style="width:25%">
-                                        Họ tên
-                                    </th>
-                                    <th class="bg-table" style="width:20%">
-                                        Thông tin chỗ
-                                    </th>
-                                    <th class="bg-table" style="width:10%" >
-                                        Giá vé
-                                    </th>
-                                    <th class="bg-table"style="width:5%" >
-                                        Giảm đối tượng
-                                    </th>
-                                    <th class="bg-table" style="width:10%" >
-                                        khuyến mại
-                                    </th>
-                                    <th class="bg-table" style="width:5%">
-                                        Bảo hiểm
-                                    </th>
-                                    <th class="bg-table" style="width:20%">
-                                        Thành tiền (VNĐ)
-                                    </th>
-                                    <th class="bg-table" style="width:5%">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="chieudi" class="table-paying">
+                            @*<tr class="et-table-group-header cd">
+                                <td colspan="1" style="text-align:center">
+                                    <label>
+                                        Chiều đi
+                                    </label>
+                                    <div>
+                                        Vui lòng nhập địa chỉ cưu trú, lưu trú vào phần địa chỉ lưu trú kế bên
+                                    </div>
+                                </td>
+                                <td colspan="7" style="text-align:left ; vertical-align:middle">
+                                    <div class="input-group input-group-sm">
+                                        <span class="style-input input-group-addon text-left" style="padding-right:22px">
+                                            Địa chỉ nơi đi
+                                            <span style="color:red;">*</span>
+                                        </span>
 
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="chieudi">
-                                <tr class="et-table-group-header">
-                                    <td colspan="1" style="text-align:center">
-                                        <label>
-                                            Chiều đi
-                                        </label>
+                                        <input class=" container-paying form-control" placeholder="Ghi rõ số nhà, xã/phường, quận/huyện/thị xã, tỉnh/thành phố" style="border-top-right-radius: 4px !important;border-bottom-right-radius: 4px !important;" />
+                                    </div>
+                                    <div class="input-group input-group-sm">
+                                        <span class=" style-input input-group-addon text-left">
+                                            Địa chỉ nơi đến
+                                            <span style="color:red;">*</span>
+                                        </span>
+
+                                        <input class="container-paying form-control" placeholder="Ghi rõ số nhà, xã/phường, quận/huyện/thị xã, tỉnh/thành phố" style="border-top-right-radius: 4px !important;border-bottom-right-radius: 4px !important;" />
+                                    </div>
+                                </td>
+                            </tr>*@
+                            <!--<tr>
+                                <td class="et-table-cell" style="padding: 0px;border-bottom: solid 2px #ccc;">
+                                    <div class="input-group input-group-sm" style="margin-bottom: 6px;width: 100%;">
+                                        <span class="input-group-addon text-left " style="width: 84px;">Họ tên</span>
+                                        <input type="text" placeholder="Thông tin hành khách" class="form-control input-sm" />
+                                    </div>
+                                    <div class="input-group input-group-sm" style="margin-bottom: 6px;width: 100%;">
+                                        <span class=" input-group-addon text-left " style="width: 84px;">đối tượng</span>
+                                        <select class="form-control input-sm">
+                                            <optgroup label="Người Việt Nam">
+                                                <option value="0" selected="selected" label="Người lớn">Người lớn</option>
+                                                <option value="1" label="Trẻ em">Trẻ em</option>
+                                                <option value="3" label="Người cao tuổi">Người cao tuổi</option>
+                                            </optgroup>
+                                            <optgroup label="Người nước ngoài">
+                                                <option value="0" selected="selected" label="Người lớn">Người lớn</option>
+                                                <option value="1" label="Trẻ em">Trẻ em</option>
+                                                <option value="3" label="Người cao tuổi">Người cao tuổi</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="input-group input-group-sm" style="margin-bottom: 6px;width: 100%;">
+                                        <span class=" text-left input-group-addon" style="width: 84px;">Số giấy tờ</span>
+                                        <input type="text" placeholder="Số CMND/ Hộ chiếu/ Ngày tháng năm sinh trẻ em" class="form-control input-sm" />
+                                    </div>
+                                </td>
+                                <td style="font-size: 10px;border-bottom: solid 2px #ccc;">
+                                    <div class="text-center">
+                                        <img src="~/Images/waring20.png" tooltip="Vé hết thời gian giữ, không còn trong giỏ vé.">
+                                    </div>
+                                    <div>
                                         <div>
-                                            Vui lòng nhập địa chỉ cưu trú, lưu trú vào phần địa chỉ lưu trú kế bên
-                                        </div>
-                                    </td>
-                                    <td colspan="7" style="text-align:left ; vertical-align:middle">
-                                        <div class="input-group input-group-sm">
-                                            <span class="style-input input-group-addon text-left" style="padding-right:22px">
-                                                Địa chỉ nơi đi
-                                                <span style="color:red;">*</span>
-                                            </span>
-
-                                            <input class=" container-paying form-control" placeholder="Ghi rõ số nhà, xã/phường, quận/huyện/thị xã, tỉnh/thành phố" style="border-top-right-radius: 4px !important;border-bottom-right-radius: 4px !important;" />
-                                        </div>
-                                        <div class="input-group input-group-sm">
-                                            <span class=" style-input input-group-addon text-left">
-                                                Địa chỉ nơi đến
-                                                <span style="color:red;">*</span>
-                                            </span>
-
-                                            <input class="container-paying form-control" placeholder="Ghi rõ số nhà, xã/phường, quận/huyện/thị xã, tỉnh/thành phố" style="border-top-right-radius: 4px !important;border-bottom-right-radius: 4px !important;" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="et-table-cell" style="padding: 0px;border-bottom: solid 2px #ccc;">
-                                        <div class="input-group input-group-sm" style="margin-bottom: 6px;width: 100%;">
-                                            <span class="input-group-addon text-left " style="width: 84px;">Họ tên</span>
-                                            <input type="text" placeholder="Thông tin hành khách" class="form-control input-sm" />
-                                        </div>
-                                        <div class="input-group input-group-sm" style="margin-bottom: 6px;width: 100%;">
-                                            <span class=" input-group-addon text-left " style="width: 84px;">đối tượng</span>
-                                            <select class="form-control input-sm">
-                                                <optgroup label="Người Việt Nam">
-                                                    <option value="0" selected="selected" label="Người lớn">Người lớn</option>
-                                                    <option value="1" label="Trẻ em">Trẻ em</option>
-                                                    <option value="3" label="Người cao tuổi">Người cao tuổi</option>
-                                                </optgroup>
-                                                <optgroup label="Người nước ngoài">
-                                                    <option value="0" selected="selected" label="Người lớn">Người lớn</option>
-                                                    <option value="1" label="Trẻ em">Trẻ em</option>
-                                                    <option value="3" label="Người cao tuổi">Người cao tuổi</option>
-                                                </optgroup>
-                                            </select>
-                                        </div>
-                                        <div class="input-group input-group-sm" style="margin-bottom: 6px;width: 100%;">
-                                            <span class=" text-left input-group-addon" style="width: 84px;">Số giấy tờ</span>
-                                            <input type="text" placeholder="Số CMND/ Hộ chiếu/ Ngày tháng năm sinh trẻ em" class="form-control input-sm" />
-                                        </div>
-                                    </td>
-                                    <td style="font-size: 10px;border-bottom: solid 2px #ccc;">
-                                                                          <div class="text-center">
-                                            <img src="~/Images/waring20.png" tooltip="Vé hết thời gian giữ, không còn trong giỏ vé.">
+                                            SE9 Hà Nội-Sài Gòn
                                         </div>
                                         <div>
-                                            <div>
-                                                SE9 Hà Nội-Sài Gòn
-                                            </div>
-                                            <div>
-                                                26/01/2022 14:25
-                                            </div>
-                                            <div>
-                                                @*'Toa ' + ve.carNo + ' chỗ ' + ve.seat.ChoSo*@
-                                                Toa 1 chỗ 51
-                                            </div>
-                                            <div>
-                                                Ngồi mềm điều hòa
-                                            </div>
+                                            26/01/2022 14:25
                                         </div>
-                                    </td>
-                                    @*Giá vé*@
-                                    <td class="et-table-cell text-right" style="border-bottom: solid 2px #ccc;">
-                                        949,000
-                                    </td>
-                                    @*Giảm đối tượng*@
-                                    <td class="et-table-cell text-right" style="border-bottom: solid 2px #ccc;">
-                                        0
-                                    </td>
-                                    @*khuyến mại*@
-                                    <td class="et-table-cell text-left" style="border-bottom: solid 2px #ccc;">
+                                        <div>-->
+                                            @*'Toa ' + ve.carNo + ' chỗ ' + ve.seat.ChoSo*@
+                                            <!--Toa 1 chỗ 51
+                                        </div>
                                         <div>
-                                            Không có khuyến mại cho vé này
+                                            Ngồi mềm điều hòa
                                         </div>
-                                    </td>
-                                    @*Bảo hiểm*@
-                                    <td class="et-table-cell text-right" style="border-bottom: solid 2px #ccc;">
-                                        1,000
-                                    </td>
-                                    @*Thành tiền*@
-                                    <td class="et-table-cell text-right" style="border-bottom: solid 2px #ccc;">
-                                        950,000
-                                    </td>
-                                    <td style="vertical-align: middle;border-bottom: solid 2px #ccc;">
-                                        <a class="et-btn-cancel">
+                                    </div>
+                                </td>-->
+                                @*Giá vé*@
+                                <!--<td class="et-table-cell text-right" style="border-bottom: solid 2px #ccc;">
+                                    949,000
+                                </td>-->
+                                @*Giảm đối tượng*@
+                                <!--<td class="et-table-cell text-right" style="border-bottom: solid 2px #ccc;">
+                                    0
+                                </td>-->
+                                @*khuyến mại*@
+                                <!--<td class="et-table-cell text-left" style="border-bottom: solid 2px #ccc;">
+                                    <div>
+                                        Không có khuyến mại cho vé này
+                                    </div>
+                                </td>-->
+                                @*Bảo hiểm*@
+                                <!--<td class="et-table-cell text-right" style="border-bottom: solid 2px #ccc;">
+                                    1,000
+                                </td>-->
+                                @*Thành tiền*@
+                                <!--<td class="et-table-cell text-right" style="border-bottom: solid 2px #ccc;">
+                                    950,000
+                                </td>
+                                <td style="vertical-align: middle;border-bottom: solid 2px #ccc;">
+                                    <a class="et-btn-cancel">
 
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr class="bg-info">
-                                    <td colspan="6">
-                                        <span style="font-weight:700; float:right">Tổng tiền</span>
-                                    </td>
-                                    <td class="text-right" style="font-weight:700">
-                                        <span>2,850,000</span>
-                                    </td>
-                                    <td>&nbsp;</td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                  
+                                    </a>
+                                </td>
+                            </tr>-->
+                        </tbody>
+                        <tfoot>
+                            <tr class="bg-info">
+                                @*<td colspan="6">
+                                    <span style="font-weight:700; float:right">Tổng tiền</span>
+                                </td>
+                                <td class="text-right" style="font-weight:700">
+                                    <span>2,850,000</span>
+                                </td>
+                                <td>&nbsp;</td>*@
+                            </tr>
+                        </tfoot>
+                    </table>
+
                     <div class="et-register-block">
                         <h5>Thông tin người đặt vé</h5>
                         <div class="text-info" style="margin-bottom:15px">
@@ -326,39 +327,68 @@
                             quy định của Tổng công ty Đường sắt Việt Nam.
                         </div>
                         <div class="form-horizontal form-group">
+                            <form id="formmain">
+                            @*<div class="row error1">
+                                <label class="col-xs-4 et-col-md-2 text-left"></label>
+                                <div class="col-xs-8 et-col-md-4" style="margin-bottom:5px">
+                                    <label class="form-control input-sm ErrornameMain " />
+                                </div>
+                                <label class="col-xs-4 et-col-md-2 text-left"></label>
+                                <div class="col-xs-8 et-col-md-4" style="margin-bottom:5px">
+                                    <label class="form-control input-sm ErrorcmndMain " />
+                                </div>
+                            </div>*@
                             <div class="row">
                                 <label class="col-xs-4 et-col-md-2 text-left">Họ và tên<span style="color: red">*</span></label>
                                 <div class="col-xs-8 et-col-md-4" style="margin-bottom:5px">
-                                    <input type="text" class="form-control input-sm " />
+                                    <input name="mainName" type="text" class="form-control input-sm " />
                                 </div>
                                 <label class="col-xs-4 et-col-md-2 text-left">Số CMND/Hộ chiếu<span style="color: red">*</span></label>
                                 <div class="col-xs-8 et-col-md-4" style="margin-bottom:5px">
-                                    <input type="text" class="form-control input-sm " />
+                                    <input name="mainCMND" type="text" class="form-control input-sm " />
                                 </div>
                             </div>
+                            @*<div class="row error2">
+                                <label class="col-xs-4 et-col-md-2 text-left"></label>
+                                <div class="col-xs-8 et-col-md-4" style="margin-bottom:5px">
+                                    <label class="form-control input-sm " />
+                                </div>
+                                <label class="col-xs-4 et-col-md-2 text-left"></label>
+                                <div class="col-xs-8 et-col-md-4" style="margin-bottom:5px">
+                                    <label class="form-control input-sm " />
+                                </div>
+                            </div>*@
                             <div class="row">
                                 <label class="col-xs-4 et-col-md-2 text-left">Email</label>
                                 <div class="col-xs-8 et-col-md-4" style="margin-bottom:5px">
-                                    <input type="text" class="form-control input-sm " />
+                                    <input name="mainEmail" type="email" class="form-control input-sm " />
                                 </div>
                                 <label class="col-xs-4 et-col-md-2 text-left">Xác nhận email</label>
                                 <div class="col-xs-8 et-col-md-4" style="margin-bottom:5px">
-                                    <input type="text" class="form-control input-sm " />
+                                    <input name="mainVerify" type="email" class="form-control input-sm" />
                                 </div>
                             </div>
+                            @*<div class="row Error3">
+                                <label class="col-xs-4 et-col-md-2 text-left"></label>
+                                <div class="col-xs-8 et-col-md-4" style="margin-bottom:5px">
+                                    <label  class="form-control input-sm " />
+                                </div>
+
+                            </div>*@
                             <div class="row">
                                 <label class="col-xs-4 et-col-md-2 text-left">Số điện thoại di động<span style="color: red">*</span></label>
                                 <div class="col-xs-8 et-col-md-4" style="margin-bottom:5px">
-                                    <input type="text" class="form-control input-sm " />
+                                    <input name="phoneMain" type="tel" class="form-control input-sm " />
                                 </div>
 
                             </div>
+                                </form>
                         </div>
                         <div style="margin-top:20px">
                             <h5 class="ng-binding">Phương thức thanh toán</h5>
                             <div class="list-group border-style" style="padding:15px">
                                 <div style="display:flex; align-items:center">
-                                    <input type="radio" style="margin-right:5px" />
+                                    <input id="methodPaying" type="radio" style="margin-right:5px" />
                                     <img src="~/Images/logo-dvtt-PayLater.png" style="width:100px; margin-right:5px" />
                                     <div>
                                         <div class="text-info" style="font-size:12px; font-weight:700">
@@ -373,15 +403,15 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
                 <div class="step-container">
                    
                         <h3>Xác nhận thông tin đặt vé</h3>
                         <div>
                             <h5>Thông tin người mua vé</h5>
                         </div>
-                     <div style="border-bottom: 1px solid #ddd ; padding-bottom:15px;">
-                        <table style="width:100%">
+                     <div id="VerifyInFo" style="border-bottom: 1px solid #ddd ; padding-bottom:15px;">
+                        @*<table style="width:100%">
                             <tr>
                                 <td>
                                     <table style="width:80%">
@@ -466,9 +496,9 @@
                                 </td>
 
                             </tr>
-                        </table>
+                        </table>*@
                     </div>
-                <div style="margin-top:50px">
+                <div class="tb-detail" style="margin-top:50px">
                     <table class="table table-bordered">
                         <thead class="et-table-header">
                             <tr>
@@ -499,10 +529,10 @@
                                                 Họ tên :
                                             </div>
                                             <div>
-                                                Họ tên :
+                                               đối tượng :
                                             </div>
                                             <div style="margin-right:15px">
-                                                Họ tên :
+                                               Số giấy tờ :
                                             </div>
                                         </div>
                                         <div>
@@ -550,88 +580,5 @@
     </div>
 </div>
 @section Script {
-    <script>
-        $(document).ready(function () {
-            var currentGfgStep, nextGfgStep, previousGfgStep;
-            var opacity;
-            var current = 1;
-            var steps = $(".step >div").length;
-            console.log(steps)
-            setProgressBar(current);
-
-            $("#next").click(function () {
-
-                currentGfgStep = $(`.step >div:nth-child(${current})`);
-                // var active= $(`.step div:nth-child(${current+1} img:ntn-child(1))`);
-                // var inactive= $(`.step div:nth-child(${current+1} img:ntn-child(2)`);
-                // console.log(active);
-                // console.log(inactive);
-                nextGfgStep = currentGfgStep.next();
-                var active = $(` #step-img div:nth-child(${current + 1}) img:nth-child(1)`);
-                var inactive = $(`#step-img div:nth-child(${current + 1}) img:nth-child(2)`);
-                console.log(active);
-                inactive.hide();
-                active.show();
-                // $("#progressbar li").eq($("fieldset")
-                //     .index(nextGfgStep)).addClass("active");
-                currentGfgStep.hide();
-                nextGfgStep.show();
-                // currentGfgStep.animate({ opacity: 0 }, {
-                //     step: function (no w) {
-                //         opacity = 1 -now;
-
-                //         currentGfgStep.css({
-                //             'display': 'none',
-                //             'position': 'relative'
-                //         });
-                //         nextGfgStep.css({ 'opacity': opacity });
-                //     },
-                //     duration: 500
-                // });
-                setProgressBar(++current);
-            });
-
-            $("#prev").click(function () {
-                if (current > 1) {
-                    console.log(current)
-                    currentGfgStep = $(`.step >div:nth-child(${current})`);
-                    var active = $(` #step-img div:nth-child(${current}) img:nth-child(1)`);
-                    var inactive = $(`#step-img div:nth-child(${current}) img:nth-child(2)`);
-                    previousGfgStep = currentGfgStep.prev();
-                    inactive.show();
-                    active.hide();
-                    var percent = parseFloat(100 / steps) * current;
-                    $(".et-step-bar").removeClass("et-step-bar" + percent);
-                    // $("#progressbar li").eq($("fieldset")
-                    //     .index(currentGfgStep)).removeClass("active");
-
-                    previousGfgStep.show();
-                    currentGfgStep.hide();
-                    // currentGfgStep.animate({ opacity: 0 }, {
-                    //     step: function (now) {
-                    //         opacity = 1 - now;
-
-                    //         currentGfgStep.css({
-                    //             'display': 'none',
-                    //             'position': 'relative'
-                    //         });
-                    //         previousGfgStep.css({ 'opacity': opacity });
-                    //     },
-                    //     duration: 500
-                    // });
-                    setProgressBar(--current);
-                }
-            });
-
-            function setProgressBar(currentStep) {
-                var percent = parseFloat(100 / steps) * currentStep;
-                percent = percent.toFixed();
-                $(".et-step-bar").addClass("et-step-bar" + percent);
-            }
-
-            // $(".submit").click(function () {
-            //     return false;
-            // })
-        });
-    </script>
+    <script src="~/JSProject/Paying.js"></script>
 }
