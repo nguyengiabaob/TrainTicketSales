@@ -1,5 +1,4 @@
-﻿import { error } from "jquery";
-
+﻿
 $(document).ready(function () {
     let countclick = 0;
     var currentGfgStep, nextGfgStep, previousGfgStep;
@@ -69,7 +68,7 @@ $(document).ready(function () {
                         },
                         mainVerify: {
                             required: true,
-                            equalTo: "#emailMain"
+                            equalTo: "#eMain"
                         },
                         mainPhone: {
                             required: true,
@@ -87,8 +86,8 @@ $(document).ready(function () {
                             required: "Vui lòng nhập vào CMND",
                         },
                         mainVerify: {
-                            required: "sdadas",
-                            equalTo: "dsadasdasd"
+                            required: "Vui lòng nhập vào email",
+                            equalTo: "Email không hợp lệ"
                         },
 
                         mainPhone: {
@@ -126,7 +125,8 @@ $(document).ready(function () {
                     //     .index(nextGfgStep)).addClass("active");
                     currentGfgStep.hide();
                     nextGfgStep.show();
-                    loadInfo2();
+                    console.log(infomain)
+                    loadInfo2(infomain);
                     countclick++;
                     // currentGfgStep.animate({ opacity: 0 }, {
                     //     step: function (no w) {
@@ -141,13 +141,16 @@ $(document).ready(function () {
                     //     duration: 500
                     // });
                     setProgressBar(++current);
+                    return;
                 }
             }
-            if (countclick == 2) {
+            if (countclick == 1) {
+                console.log('131231',JSON.stringify(infomain));
                 $.ajax({
-                    url: "/api/SalesOrder",
-                    method: "POST",
-                    data: { saleOrder: data },
+                    url: "/api/SaleOrders",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(infomain),
                     success: (res) => {
                         currentGfgStep = $(`.step >div:nth-child(${current})`);
                         // var active= $(`.step div:nth-child(${current+1} img:ntn-child(1))`);
@@ -214,6 +217,8 @@ function showTablePaying() {
     $.get("/Cart/ListCart").done((res) => {
         let a = res.result;
         let html = "";
+        let htmlmb = ` <div class="card">
+                              `;
         let total = 0;
         if (a.filter(item => item.direction == "DI").length > 0) {
             html += `<tr class="et-table-group-header cd">
@@ -226,27 +231,81 @@ function showTablePaying() {
                                     </div>
                                 </td>
                                 <td colspan="7" style="text-align:left ; vertical-align:middle">
-                                    <div class="input-group input-group-sm">
-                                        <span class="style-input input-group-addon text-left" style="padding-right:22px">
-                                            Địa chỉ nơi đi
-                                            <span style="color:red;">*</span>
-                                        </span>
-
-                                        <input class=" container-paying form-control" placeholder="Ghi rõ số nhà, xã/phường, quận/huyện/thị xã, tỉnh/thành phố" style="border-top-right-radius: 4px !important;border-bottom-right-radius: 4px !important;" />
-                                    </div>
-                                    <div class="input-group input-group-sm">
-                                        <span class=" style-input input-group-addon text-left">
-                                            Địa chỉ nơi đến
-                                            <span style="color:red;">*</span>
-                                        </span>
-
-                                        <input class="container-paying form-control" placeholder="Ghi rõ số nhà, xã/phường, quận/huyện/thị xã, tỉnh/thành phố" style="border-top-right-radius: 4px !important;border-bottom-right-radius: 4px !important;" />
-                                    </div>
+                                    
                                 </td>
                             </tr>`
-
+            htmlmb += `  <div class="card-title my-card-title">
+                                    Chiều đi
+                                </div>
+                         <div class="card-body mobile-card">`
             for (let i = 0; i < a.length; i++) {
                 if (a[i].direction == "DI") {
+
+                    htmlmb +=`<div class="  col-xs-10 col-sm-10 text-left ">
+                                        <div>
+                                            -Tàu
+                                            <span class="text-info-ticket ">
+                                                  ${a[i].nameTrain}
+                                            </span>
+                                            Toa
+                                            <span class="text-info-ticket ">
+                                                 ${a[i].cabin}
+                                            </span>
+                                            
+
+                                             ${a[i].cabinName}
+                                        </div>
+                                        <div>
+                                            - Thành tiền (VND) :
+                                            <span class="text-info-ticket ">
+                                               ${Number(a[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                            </span>
+                                            VND
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2">
+                                        <div>
+                                            <a class="et-btn-cancel .paying-cancel-${i}">
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top:50px">
+                                        <div class="col-xs-3 col-sm-3">
+                                            <div style="margin-bottom:15px">
+                                                <span class="text-left" style="border-radius: 3px; font-size: 13px;"> Họ Tên</span>
+                                            </div>
+
+                                            <div style="margin-bottom:15px">
+                                                <span class="  text-left " style="border-radius: 3px; font-size: 13px;">đối tượng</span>
+                                            </div>
+                                            <div>
+                                                <span class=" text-left" style="border-radius: 3px; font-size: 13px;">Số giấy tờ</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-9 col-sm-9">
+                                            <div style="margin-bottom:15px">
+                                                <input type="text" placeholder="Thông tin hành khách" class="form-control" />
+                                            </div>
+                                            <div style="margin-bottom:15px">
+                                                <select class="form-control">
+                                                   
+                                                        <option value="0" selected="selected" label="Người lớn">Người lớn</option>
+                                                        <option value="1" label="Trẻ em">Trẻ em</option>
+                                                      
+                                                   
+                                                    
+                                                </select>
+                                            </div>
+                                            <div>
+
+
+                                                <input type="text" placeholder="Số CMND/ Hộ chiếu/ Ngày tháng năm sinh trẻ em" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            </div>`
                     html += ` <tr class="info-sub-${i}">
                                 <td class="et-table-cell" style="padding: 0px;border-bottom: solid 2px #ccc;">
                                     <div class="input-group input-group-sm " style="margin-bottom: 6px;width: 100%;">
@@ -258,7 +317,7 @@ function showTablePaying() {
                                         <select class="form-control input-sm">
                                                 <option value="0" selected="selected" label="Người lớn">Người lớn</option>
                                                 <option value="1" label="Trẻ em">Trẻ em</option>
-                                                <option value="2" label="Người cao tuổi">Người cao tuổi</option>
+                                             
                                         </select>
                                     </div>
                                     <div class="input-group input-group-sm" style="margin-bottom: 6px;width: 100%;">
@@ -268,7 +327,7 @@ function showTablePaying() {
                                 </td>
                                 <td style="font-size: 10px;border-bottom: solid 2px #ccc;">
                                     <div class="text-center">
-                                        <img src="~/Images/waring20.png" tooltip="Vé hết thời gian giữ, không còn trong giỏ vé.">
+                                       
                                     </div>
                                     <div>
                                         <div>
@@ -328,27 +387,81 @@ function showTablePaying() {
                                     </div>
                                 </td>
                                 <td colspan="7" style="text-align:left ; vertical-align:middle visibility:hidden">
-                                    <div class="input-group input-group-sm">
-                                        <span class="style-input input-group-addon text-left" style="padding-right:22px">
-                                            Địa chỉ nơi đi
-                                            <span style="color:red;">*</span>
-                                        </span>
-
-                                        <input class=" container-paying form-control" placeholder="Ghi rõ số nhà, xã/phường, quận/huyện/thị xã, tỉnh/thành phố" style="border-top-right-radius: 4px !important;border-bottom-right-radius: 4px !important;" />
-                                    </div>
-                                    <div class="input-group input-group-sm">
-                                        <span class=" style-input input-group-addon text-left">
-                                            Địa chỉ nơi đến
-                                            <span style="color:red;">*</span>
-                                        </span>
-
-                                        <input class="container-paying form-control" placeholder="Ghi rõ số nhà, xã/phường, quận/huyện/thị xã, tỉnh/thành phố" style="border-top-right-radius: 4px !important;border-bottom-right-radius: 4px !important;" />
-                                    </div>
+                                   
                                 </td>
                             </tr>`
-
+            htmlmb += `  <div class="card-title my-card-title">
+                                    Chiều về
+                                </div>
+                         <div class="card-body mobile-card">`
             for (let i = 0; i < a.length; i++) {
                 if (a[i].direction == "VE") {
+
+                    htmlmb += `<div class="  col-xs-10 col-sm-10 text-left ">
+                                        <div>
+                                            -Tàu
+                                            <span class="text-info-ticket ">
+                                                  ${a[i].nameTrain}
+                                            </span>
+                                            Toa
+                                            <span class="text-info-ticket ">
+                                                 ${a[i].cabin}
+                                            </span>
+                                            
+
+                                             ${a[i].cabinName}
+                                        </div>
+                                        <div>
+                                            - Thành tiền (VND) :
+                                            <span class="text-info-ticket ">
+                                               ${Number(a[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                                            </span>
+                                            VND
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2">
+                                        <div>
+                                            <a class="et-btn-cancel .paying-cancel-${i}">
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top:50px">
+                                        <div class="col-xs-3 col-sm-3">
+                                            <div style="margin-bottom:15px">
+                                                <span class="text-left" style="border-radius: 3px; font-size: 13px;"> Họ Tên</span>
+                                            </div>
+
+                                            <div style="margin-bottom:15px">
+                                                <span class="  text-left " style="border-radius: 3px; font-size: 13px;">đối tượng</span>
+                                            </div>
+                                            <div>
+                                                <span class=" text-left" style="border-radius: 3px; font-size: 13px;">Số giấy tờ</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-9 col-sm-9">
+                                            <div style="margin-bottom:15px">
+                                                <input type="text" placeholder="Thông tin hành khách" class="form-control" />
+                                            </div>
+                                            <div style="margin-bottom:15px">
+                                                <select class="form-control">
+                                                   
+                                                        <option value="0" selected="selected" label="Người lớn">Người lớn</option>
+                                                        <option value="1" label="Trẻ em">Trẻ em</option>
+                                                      
+                                                   
+                                                    
+                                                </select>
+                                            </div>
+                                            <div>
+
+
+                                                <input type="text" placeholder="Số CMND/ Hộ chiếu/ Ngày tháng năm sinh trẻ em" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            </div>`
                     html += ` <tr class="info-sub-${i}">
                                 <td class="et-table-cell" style="padding: 0px;border-bottom: solid 2px #ccc;">
                                     <div class="input-group input-group-sm" style="margin-bottom: 6px;width: 100%;">
@@ -418,6 +531,7 @@ function showTablePaying() {
                 }
             }
         }
+        $(".component-mobile").html(htmlmb)
         $(".table-paying").html(html);
         $("tfoot .bg-info").html(
             `<td colspan="6">
@@ -443,19 +557,19 @@ function validateInfomation(Arr) {
     let checked = 0;
     for (let i = 0; i < Arr.length; i++) {
         const format = /[0-9]{9}/;
-        let nameSub = $(`.info-sub-${i} input[placeholder="Thông tin hành khách"]`).text();
+        let nameSub = $(`.info-sub-${i} input[placeholder="Thông tin hành khách"]`).val();
         let combox = $(`.info-sub-${i} select.form-control.input-sm option:selected`).val();
         console.log(nameSub);
-        let cmnd = $(`.info-sub-${i} input[placeholder="Số CMND/ Hộ chiếu/ Ngày tháng năm sinh trẻ em"]`).text();
-        if (nameSub == "" || combox == null || cmnd == "" || !format.test(cmnd)) {
+        let cmnd = $(`.info-sub-${i} input[placeholder="Số CMND/ Hộ chiếu/ Ngày tháng năm sinh trẻ em"]`).val();
+        if (!nameSub  || combox == null || !cmnd || !format.test(cmnd)) {
             console.log($(`.info-sub-${i}  .input-group.input-group-sm`));
-            $(`.info-sub-${i}  .input-group.input-group-sm`).addClass("errorvalidate");
+            $(`.info-sub-${i} .input-group.input-group-sm`).addClass("errorvalidate");
             checked += 1;
             
         }
         
         else {
-            $(`.info-sub-${i}  .input-group.input-group-sm`).removeClass("errorvalidate");
+            $(`.info-sub-${i} .input-group.input-group-sm`).removeClass("errorvalidate");
             
         }
     }
@@ -479,17 +593,17 @@ function onchangeText() {
 }
 function getInFoMain() {
     let subIfo = [];
-    let mainName = $(`.col-xs-8.et-col-md-4  input[name = "mainName"]`).text();
-    let orderDay = new Date.now();
-    let mainPhone = $(`.col-xs-8.et-col-md-4  input[name = "mainPhone"]`).text();
-    let mainemail = $(`.col-xs-8.et-col-md-4  input[name = "mainEmail"]`).text();
-    let maincmnd = $(`.col-xs-8.et-col-md-4  input[name = "mainCMND"]`).text();
+    let mainName = $(`.col-xs-8.et-col-md-4  input[name = "mainName"]`).val();
+    let orderDay = new Date( Date.now());
+    let mainPhone = $(`.col-xs-8.et-col-md-4  input[name = "mainPhone"]`).val();
+    let mainemail = $(`.col-xs-8.et-col-md-4  input[name = "mainEmail"]`).val();
+    let maincmnd = $(`.col-xs-8.et-col-md-4  input[name = "mainCMND"]`).val();
     $.get("/Cart/ListCart").done((res) => {
         let a = res.result
         for (let i = 0; i < a.length; i++) {
-            let nameSub = $(`.info-sub-${i} input[placeholder="Thông tin hành khách"]`).text();
+            let nameSub = $(`.info-sub-${i} input[placeholder="Thông tin hành khách"]`).val();
             let combox = $(`.info-sub-${i} select.form-control.input-sm option:selected`).val();
-            let cmnd = $(`.info-sub-${i} input[placeholder="Số CMND/ Hộ chiếu/ Ngày tháng năm sinh trẻ em"]`).text();
+            let cmnd = $(`.info-sub-${i} input[placeholder="Số CMND/ Hộ chiếu/ Ngày tháng năm sinh trẻ em"]`).val();
             let seatid = a[i].id;
             let item = {
                 id: 0,
@@ -515,7 +629,8 @@ function getInFoMain() {
     return mainInfo;
 }
 function loadInfo2(info) {
-    $("#VerifyInfo").html(` <table style="width:100%">
+    console.log(info);
+    $("#VerifyInFo").html(` <table style="width:100%">
                             <tr>
                                 <td>
                                     <table style="width:80%">
@@ -529,17 +644,7 @@ function loadInfo2(info) {
                                         </tr>
                                     </table>
                                 </td>
-                                <td>
-                                    <table style="width:80%">
-                                        <tr>
-                                            <td width="50%">
-                                                <span>Mã hội viên</span>
-                                            </td>
-                                            <td width="50%">
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
+                                
                             </tr>
                             <tr>
                                 <td>
@@ -605,36 +710,43 @@ function loadInfo2(info) {
     $.get("/Cart/ListCart").done((res) => {
         let html = "";
         let countMoney = 0;
-        let b = [...res]
+        let b = [...res.result]
         let d = [...info.saleOrderDetail];
+        console.log(b);
+        console.log(d);
         if (b.length > 0) {
             for (let i = 0; i < b.length; i++) {
                 d.forEach(item => {
-                    if (item.seatId === b[i].id) {
+                    if (Number(item.seatId) === b[i].id) {
 
                         html += `  <tr>
                                 <td>
-                                    <p>1</p>
+                                    <p>${i+1}</p>
                                 </td>
                                 <td>
                                     <div>
-                                        <div style="display:flex">
+                                        <div>
                                             <div style="margin-right:15px">
                                                 Họ tên : ${item.name}
                                             </div>
                                             <div>
-                                               đối tượng : ${item.adult > 0 ? 'trẻ em' : 'Ngưởi lớn'}
+                                               đối tượng : ${item.adult > 0 ? 'trẻ em'+" " : 'Ngưởi lớn'+" "}
                                             </div>
                                             <div style="margin-right:15px">
-                                               Số giấy tờ :${item.identityCard}
+                                               Số giấy tờ :${item.identityCard} 
                                             </div>
                                         </div>
                                         <div>
-                                            Hành trình :${b[i].nameTrain + b[i].time + b[i].Cabin + b[i].cabinName}
+                                            Hành trình :${b[i].nameTrain + " " + b[i].time + " " + b[i].cabin + " " + b[i].cabinName}
                                         </div>
                                     </div>
                                 </td>
-                          
+                                <td class="text-right">
+                                    <span>${Number(b[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+                                </td>
+                                <td class="text-right">
+                                    <span>${Number(b[i].price +1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+                                </td>
                             </tr>`
                         countMoney += b[i].price + 1000;
                     }
@@ -642,6 +754,7 @@ function loadInfo2(info) {
 
 
             }
+            console.log($(".tb-detail tbody"));
             $(".tb-detail tbody").html(html + `<tr>
                                 <td colspan="2">
                                     <span style="float:right; font-weight:700">Tông tiền</span>
@@ -654,7 +767,4 @@ function loadInfo2(info) {
         }
     })
   
-}
-
-    
 }

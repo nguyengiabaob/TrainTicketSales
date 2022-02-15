@@ -1,10 +1,10 @@
 ﻿$(document).ready(async function () {
     //var ArrayBuying = [];
     var stationa = $("#StartingStation");
+
     var stationb = $("#stops");
     var productNames = new Array();
     var productIds = new Object();
-    var productIds2 = new Object();
     $.get('/api/Stations').done(
         res => {
          
@@ -12,7 +12,6 @@
             $.each(a, function (index, product) {
                 productNames.push(product.name);
                 productIds[product.name] = product.id;
-                productIds2[product.id] = product.name;
             });
             stationa.typeahead({ source: productNames, autoSelect: true, });
             stationb.typeahead({ source: productNames, autoSelect: true, });
@@ -71,6 +70,8 @@
     let SEnd = localStorage.getItem('StationEnd');
     let date = moment(localStorage.getItem('Date'), 'DD/MM/yyyy').toDate();
     let dateEnd = localStorage.getItem('Date');
+    let SbE = await getNameStation(sBegin);
+    let Send = await getNameStation(SEnd);
     console.log(moment(date).format("YYYY/MM/DD"));
     if (localStorage.getItem('DateEnd') != null) {
         dateEnd = localStorage.getItem('DateEnd');
@@ -86,7 +87,7 @@
     clickBuyingticket();
     btnSearch();
     if (option == 0 || option == 1) {
-        ShowTwoWay(sBegin, SEnd, date, 0);
+        ShowTwoWay(sBegin, SEnd, date, 0, SbE, Send);
 
         //$.get('api/Schedules/GetTrain?StationBegin=' + sBegin + '&StationEnd=' + SEnd + '&date=' + `${moment(date).format("YYYY/MM/DD")}`).done(res => {
         //    let data = [];
@@ -250,7 +251,7 @@
         //})
     }
     if (option == 1) {
-        ShowTwoWay(SEnd, sBegin, date, 1);
+        ShowTwoWay(SEnd, sBegin, dateEnd, 1, SbE, Send);
     }
     function ShowArrayBuying() {
         $.get("/Cart/ListCart").done(
@@ -350,7 +351,7 @@
                 
             }
 
-    function ShowSeatInCabin(cabinId, cabinCode, option, trainId, cabinIndex, cabinName) {
+    function ShowSeatInCabin(cabinId, cabinCode, option, trainId, cabinIndex, cabinName, sName, eName) {
         $.get(`api/Seats/GetByTrain?cabinId=${cabinId}`)
             .done(res => {
                 let length = [...res].length;
@@ -467,14 +468,14 @@
             </div>`)
                     }
                     $.each(res, function (i, e) {
-                        $(`.et-car-seat-left.et-seat-h-35.click-${e.id}`).on('click', function () {
+                        $(`.et-car-nm-64-sit  .et-seat-h-35.click-${e.id}`).on('click', function () {
                             console.log('123', e.index);
                             $.get(`/api/Schedules/${trainId}`).done(res => {
                                 let item = {
                                     Id:e.id,
                                     Direction: "DI",
                                     Index: e.index,
-                                    NameTrain: `${res.trainCode}`,
+                                    NameTrain: `${res.trainCode +" " + sName +" - "  + eName}`,
                                     Time: moment(new Date(res.dateBegin)).format("DD/MM HH:SS"),
                                     Cabin: `toa ${cabinIndex} chỗ ${e.index}`,
                                     Price: e.price,
@@ -564,7 +565,7 @@
                                 else {
                                     if (item.status === false) {
                                         console.log(item.index);
-                                        htmlseat += `<div class="et-col-1-16 et-seat-h-35 ">
+                                        htmlseat += `<div class="et-col-1-16 et-seat-h-35 click-${item.id} ">
                                     <div class="et-bed-left">
                                         <div class="et-bed-outer">
                                             <div class="et-bed text-center et-sit-avaiable">
@@ -667,14 +668,28 @@
                                     Id: e.id,
                                     Direction:"VE",
                                     Index: e.index,
-                                    NameTrain: `${res.trainCode}`,
+                                    NameTrain: `${res.trainCode + " " + sName + " - " + eName}`,
                                     Time: moment(new Date(res.dateBegin)).format("DD/MM HH:SS"),
                                     Cabin: `toa ${cabinIndex} chỗ ${e.index}`,
                                     Price: e.price,
                                     CabinName: cabinName
                                 }
-                                ArrayBuying.push(item);
-                                ShowArrayBuying(ArrayBuying);
+                                $.ajax({
+                                    url: '/Cart/addItemCart',
+                                    method: "POST",
+                                    data: { item: item },
+                                    success: function (res) {
+                                        //alert("bạn thêm một sản phẩm thành công");
+                                        //setTimeout(location.reload(), 500000)
+                                        console.log(res.status);
+                                        ShowArrayBuying();
+                                    },
+                                    error: function (e) {
+                                        console.log(e);
+                                    }
+
+
+                                })
                               
                             })
 
@@ -689,7 +704,7 @@
             })
        
     }
-    function ShowTwoWay(sBegin, SEnd, day, option) {
+    function ShowTwoWay(sBegin, SEnd, day, option ,sB,sE) {
         $.get('api/Schedules/GetTrain?StationBegin=' + sBegin + '&StationEnd=' + SEnd + '&date=' + `${moment(day).format("YYYY/MM/DD")}`).done(res => {
             let data = [];
             let htmlTrain = "";
@@ -698,7 +713,7 @@
             let trainClick = 0;
             console.log(data);
             console.log(res);
-            $.each(data, function (i, e) {
+            $.each(data,  function (i, e) {
 
                 htmlTrain += `<div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block active-train-${e.id}"  data-stt=${stt}>
                         <div class="et-train-head">
@@ -764,11 +779,11 @@
             //$('.train-group').html(htmlTrain);
             let htmltile1 = option == 0 ? `<div class="row et-page-header" style="margin-bottom: 40px;">
                 <span class="et-main-label">
-                   Chiều đi: ngày ${moment(day).format("DD/MM/YYYY")} từ Hà Nội đến Sài Gòn
+                   Chiều đi: ngày ${moment(day).format("DD/MM/YYYY")} từ ${sB} đến ${sE}
                 </span>
             </div>`: `<div class="row et-page-header" style="margin-bottom: 40px;">
                 <span class="et-main-label">
-                  Chiều về: ngày ${moment(day).format("DD/MM/YYYY")}từ Hà Nội đến Sài Gòn
+                  Chiều về: ngày ${moment(day).format("DD/MM/YYYY")}từ ${sE} đến ${sB}
                 </span>
             </div>`;
             let htmlhead = htmltile1 + `
@@ -843,7 +858,7 @@
                                 stt = item.id;
                                 console.log(stt);
                             }
-                            $(`.active-Cabin-${item.id}`).on('click', function () {
+                            $(`.active-Cabin-${item.id}`).on('click',async function () {
                                 if (activeCabin != 0) {
                                     $(`.active-Cabin-${activeCabin} .et-car-icon`).removeClass("et-car-icon-selected");
                                 }
@@ -861,7 +876,7 @@
                                 <div class="et-car-floor">`)
                                 }
 
-                                ShowSeatInCabin(item.id, item.cabinCategoryCode, option, e.id, item.index, item.cabinCategoryName);
+                                ShowSeatInCabin(item.id, item.cabinCategoryCode, option, e.id, item.index, item.cabinCategoryName, await getNameStation(sBegin), await getNameStation(SEnd));
                             })
                         })
                         if (stt != 0) {
@@ -928,7 +943,7 @@
                                 stt = item.id;
                                 console.log(stt);
                             }
-                            $(`.TwoWay .active-Cabin-${item.id}`).on('click', function () {
+                            $(`.TwoWay .active-Cabin-${item.id}`).on('click',async function () {
                                 if (activeCabin != 0) {
                                     $(`.TwoWay .active-Cabin-${activeCabin} .et-car-icon`).removeClass("et-car-icon-selected");
                                 }
@@ -942,7 +957,7 @@
                                 </div>
                             <div class="et-col-90">
                                 <div class="et-car-floor">`)
-                                ShowSeatInCabin(item.id, item.cabinCategoryCode, option, e.id, item.index, item.cabinCategoryName);
+                                ShowSeatInCabin(item.id, item.cabinCategoryCode, option, e.id, item.index, item.cabinCategoryName, await getNameStation(sBegin), await getNameStation(SEnd)) ;
                             })
                         })
                         if (stt != 0) {
@@ -960,13 +975,13 @@
         })
 
     }
-    function saveCart() {
-        if (ArrayBuying.length > 0) {
-            localStorage.setItem("Cart", ShowArrayBuying);
-            window.location = "/Home/Paying";
-        }
+    //function saveCart() {
+    //    if (ArrayBuying.length > 0) {
+    //        localStorage.setItem("Cart", ShowArrayBuying);
+    //        window.location = "/Home/Paying";
+    //    }
         
-    }
+    //}
 })
 
 async function CountSeatinCabin(id) {
@@ -1247,6 +1262,10 @@ function btnSearch() {
             })
         }
     })
+}
+async function getNameStation(id) {
+    let name = await $.get(`api/Stations/${id}`);
+    return name.name;
 }
 
 
