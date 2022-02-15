@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using TrainTicketSales.Helpers;
 using TrainTicketSales.Models.Entity;
 
 namespace TrainTicketSales.Areas.Admin.Controllers
@@ -14,8 +15,10 @@ namespace TrainTicketSales.Areas.Admin.Controllers
     {
         private readonly DsvnContext _context;
 
-        public UsersController(DsvnContext context)
+        private readonly IGeneral _general;
+        public UsersController(DsvnContext context,IGeneral general)
         {
+            _general = general;
             _context = context;
         }
 
@@ -58,6 +61,7 @@ namespace TrainTicketSales.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                users.Password= _general.Encrypt(users.Password, true);
                 _context.Add(users);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -97,6 +101,7 @@ namespace TrainTicketSales.Areas.Admin.Controllers
             {
                 try
                 {
+                    users.Password= _general.Encrypt(users.Password, true);
                     _context.Update(users);
                     await _context.SaveChangesAsync();
                 }
