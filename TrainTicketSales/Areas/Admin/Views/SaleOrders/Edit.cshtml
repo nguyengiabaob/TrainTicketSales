@@ -51,7 +51,7 @@
                 </dt>
                 <dd class="col-sm-8">
                     <select id="cboStatus" class="form-select" aria-label="Default select example">
-                        <option selected> @Html.DisplayFor(model => model.Status)</option>
+                        <option value="@Html.DisplayFor(model => model.Status)" selected> @Html.DisplayFor(model => model.StatusName)</option>
                         <option value="1">Đặt mua</option>
                         <option value="2">Chấp nhận bán</option>
                         <option value="3">Trả tiền</option>
@@ -146,7 +146,9 @@
 </div>
 @section Script {
 <script>
-                 function saveStatus() {
+
+    
+function saveStatus() {    
         let data ={id:$("#id").val(),
         status:$("#cboStatus").val()
         };
@@ -158,16 +160,12 @@
             url: url,
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(data),
-            error: function (response) {
-                toastr.error(response.result);
-            },
+           
             success: function (response) {
                 if (response.status) {
-                    alert(response);
-                    res = true;
+                    window.open(response.result, "_self")
                 } else {
-                    alert(response);
-                    res = false;
+                    
                 }
             }
         }

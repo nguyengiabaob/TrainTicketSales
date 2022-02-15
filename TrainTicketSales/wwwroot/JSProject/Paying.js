@@ -611,7 +611,7 @@ function getInFoMain() {
                 name: nameSub,
                 identityCard: cmnd,
                 adult: combox> 0 ? false : true,
-                seatId: String(seatid)
+                seatDetailId: String(seatid)
             }
             subIfo.push(item);
         }
@@ -624,7 +624,6 @@ function getInFoMain() {
         email: mainemail,
         identityCard: maincmnd,
         saleOrderDetail: subIfo,
-
     }
     return mainInfo;
 }
@@ -717,7 +716,7 @@ function loadInfo2(info) {
         if (b.length > 0) {
             for (let i = 0; i < b.length; i++) {
                 d.forEach(item => {
-                    if (Number(item.seatId) === b[i].id) {
+                    if (Number(item.seatDetailId) === b[i].id) {
 
                         html += `  <tr>
                                 <td>

@@ -85,27 +85,34 @@ namespace TrainTicketSales.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var saleOrder = await _context.SaleOrder
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (saleOrder == null)
+            var parameters = new DynamicParameters();
+            parameters.Add("@url", "");
+            parameters.Add("@id", id);
+            var result = await _dapper.GetMultiByStoreProcedureAsync<SaleOrderViewModel>("SaleOrders_GetAll", parameters, commandType: CommandType.StoredProcedure);          
+
+
+            if (result == null)
             {
                 return NotFound();
             }
-
-            return View(saleOrder);
+            return View(result.ToList()[0]);
         }
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveSaleOrderStatus(long id, int status)
+        public  async Task<JsonResult> SaveSaleOrderStatus(long id, int status)
         {
             string token = HttpContext.Session.GetString("Token");
 
             if (token == null)
             {
-                return RedirectToAction("Login", "Home");
+                 return Json(new { status = false, result = ""});
 
             }
+            string domain = _httpContextAccessor.HttpContext.Request.Host.Value;
+            string scheme = _httpContextAccessor.HttpContext.Request.Scheme;
+            string delimiter = System.Uri.SchemeDelimiter;
+            string fullDomainToUse = scheme + delimiter + domain;
 
             var model = _context.SaleOrder.Where(x => x.Id == id).Include(x => x.SaleOrderDetail).FirstOrDefault();
 
@@ -163,8 +170,8 @@ namespace TrainTicketSales.Areas.Admin.Controllers
                 }
                 await _context.SaveChangesAsync();
             }
-
-            return View(model);
+            return Json(new { status = true, result = fullDomainToUse+ "/Admin/SaleOrders/Details/"+id.ToString()});
+            
         }
 
         // GET: Admin/SaleOrders/Create

@@ -20,6 +20,7 @@ namespace TrainTicketSales.ModelsViews
         /// 1: đặt mua; 2: chấp nhận bán; 3: trả tiền; 4: xác nhận nhận tiền, 5:  giao vé, 6: hoãn, 7: đổi chuyển
         /// </summary>
         public string Status { get; set; }
+        public string StatusName { get; set; }
 
         public IEnumerable<SaleOrderDetailViewModel> SaleOrderDetail { get; set; }
     }

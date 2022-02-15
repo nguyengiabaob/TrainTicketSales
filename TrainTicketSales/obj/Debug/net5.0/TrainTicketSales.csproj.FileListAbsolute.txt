@@ -390,3 +390,4 @@ D:\VuongNQ\TrainTicketSales\TrainTicketSales\obj\Debug\net5.0\Razor\Areas\Admin\
 D:\VuongNQ\TrainTicketSales\TrainTicketSales\obj\Debug\net5.0\Razor\Areas\Admin\Views\Users\Details.cshtml.g.cs
 D:\VuongNQ\TrainTicketSales\TrainTicketSales\obj\Debug\net5.0\Razor\Areas\Admin\Views\Users\Edit.cshtml.g.cs
 D:\VuongNQ\TrainTicketSales\TrainTicketSales\obj\Debug\net5.0\Razor\Areas\Admin\Views\Users\Index.cshtml.g.cs
+D:\VuongNQ\TrainTicketSales\TrainTicketSales\obj\Debug\net5.0\Razor\Areas\Admin\Views\SaleOrders\Details.cshtml.g.cs

@@ -1,0 +1,52 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model TrainTicketSales.ModelsViews.SaleOrderViewModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Chi tiết đơn hàng</h1>
+
+<dl class="row">
+    <dd><input type="hidden" id="id" value="@(Model.Id)"></dd>
+
+    <dt class="col-sm-4">
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+    <dd class="col-sm-8">
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+    <dt class="col-sm-4">
+        @Html.DisplayNameFor(model => model.OrderDate)
+    </dt>
+    <dd class="col-sm-8">
+        @Html.DisplayFor(model => model.OrderDate)
+    </dd>
+    <dt class="col-sm-4">
+        @Html.DisplayNameFor(model => model.PhoneNumber)
+    </dt>
+    <dd class="col-sm-8">
+        @Html.DisplayFor(model => model.PhoneNumber)
+    </dd>
+    <dt class="col-sm-4">
+        @Html.DisplayNameFor(model => model.Email)
+    </dt>
+    <dd class="col-sm-8">
+        @Html.DisplayFor(model => model.Email)
+    </dd>
+    <dt class="col-sm-4">
+        @Html.DisplayNameFor(model => model.IdentityCard)
+    </dt>
+    <dd class="col-sm-8">
+        @Html.DisplayFor(model => model.IdentityCard)
+    </dd>
+        <dt class="col-sm-4">
+        @Html.DisplayNameFor(model => model.Status)
+    </dt>
+    <dd class="col-sm-8">
+        @Html.DisplayFor(model => model.StatusName)
+    </dd>
+   
+
+</dl>
+<a asp-action="Index">Back to List</a>
