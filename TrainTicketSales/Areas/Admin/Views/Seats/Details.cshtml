@@ -1,4 +1,5 @@
-﻿@model TrainTicketSales.Models.Entity.Seat
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model TrainTicketSales.Models.Entity.Seat
 
 @{
     ViewData["Title"] = "Details";
@@ -11,30 +12,77 @@
     <h4>Seat</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Index)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Index)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Cabin)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cabin.Id)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FloorCodeNavigation)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FloorCodeNavigation.Code)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.SeatCategoryCodeNavigation)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.SeatCategoryCodeNavigation.Code)
         </dd>
+        <hr />
+        <h4> Chi tiết ghế theo từng chuyến </h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SeatDetail.ToList()[0].Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SeatDetail.ToList()[0].Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SeatDetail.ToList()[0].Schedule)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SeatDetail.ToList()[0].Seat)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.SeatDetail)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Schedule.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Seat.SeatCategoryCode)
+                        </td>
+                        <td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
     </dl>
 </div>
 <div>

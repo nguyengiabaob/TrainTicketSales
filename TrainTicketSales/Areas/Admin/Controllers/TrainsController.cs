@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,12 @@ namespace TrainTicketSales.Areas.Admin.Controllers
         // GET: Admin/Trains
         public async Task<IActionResult> Index()
         {
+            string token = HttpContext.Session.GetString("Token");
+            if (token == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
             return View(await _context.Train.ToListAsync());
         }
 

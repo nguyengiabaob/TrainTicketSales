@@ -1,4 +1,5 @@
-﻿@model TrainTicketSales.Models.Entity.Cabin
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model TrainTicketSales.Models.Entity.Cabin
 
 @{
     ViewData["Title"] = "Details";
@@ -40,10 +41,7 @@
             </th>           
             <th>
                 Tầng 
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Seat.ToList()[0].SeatCategoryCodeNavigation)
-            </th>
+            </th>            
             <th></th>
         </tr>
     </thead>
@@ -53,19 +51,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Index)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cabin.Id)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.FloorCodeNavigation.Name)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SeatCategoryCodeNavigation.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            
+            <td>                
+                <a asp-controller="Seats" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                  @*<a href="@Url.Action("Details", "Seats", new {id =@item.Id})"> Details</a>|*@                
             </td>
         </tr>
 }

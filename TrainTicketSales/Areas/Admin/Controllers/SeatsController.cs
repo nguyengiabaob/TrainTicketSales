@@ -38,6 +38,7 @@ namespace TrainTicketSales.Areas.Admin.Controllers
                 .Include(s => s.Cabin)
                 .Include(s => s.FloorCodeNavigation)
                 .Include(s => s.SeatCategoryCodeNavigation)
+                .Include(x=>x.SeatDetail).ThenInclude(x=>x.Schedule).ThenInclude(x=>x.BeginStation)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (seat == null)
             {
