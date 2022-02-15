@@ -1,3 +1,6 @@
+
+using API_CRM.Services.UserManagementServices.UserServices;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -7,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
@@ -17,6 +21,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TrainTicketSales.Helpers;
+using TrainTicketSales.Interfaces;
 using TrainTicketSales.Models.Entity;
 
 namespace TrainTicketSales
@@ -40,7 +45,9 @@ namespace TrainTicketSales
             services.AddDbContext<DsvnContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IDapper, TrainTicketSales.Helpers.Dapper>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+            services.AddTransient<IGeneral, GeneralClass>();
+            services.AddTransient<IUsersService, UserServices>();
+            services.AddSession();
             // Enable CORS
             services.AddCors(options =>
             {
@@ -111,6 +118,32 @@ namespace TrainTicketSales
             services.AddControllersWithViews();
             services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             
+            //*************************** authentication vs authorization **************************
+            // configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure jwt authentication
+            AppSettings appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
         }
 
 
@@ -135,6 +168,16 @@ namespace TrainTicketSales
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+            app.UseSession();
+            app.Use(async (context, next) =>
+            {
+                var token = context.Session.GetString("Token");
+                if (!string.IsNullOrEmpty(token))
+                {
+                    context.Request.Headers.Add("Authorization", "Bearer " + token);
+                }
+                await next();
             });
             app.UseHttpsRedirection();
             app.UseStaticFiles();

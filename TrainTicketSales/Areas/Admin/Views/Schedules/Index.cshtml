@@ -1,0 +1,72 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<TrainTicketSales.Models.Entity.Schedule>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Danh sách lịch trình tàu</h1>
+
+<p>
+    
+    <a href="@Url.Action("Create", "Schedules")"> Tạo mới</a>
+</p>
+<table id="tb" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateBegin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BeginStation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndStation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrainCodeNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateBegin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginStation.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndStation.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainCodeNavigation.Code)
+            </td>
+            <td>
+                <a href="@Url.Action("Details", "Schedules", new {id =@item.Id})"> Details</a>|
+                @*<a href="@Url.Action("Edit", "Schedules", new {id =@item.Id})"> Edit</a>|*@
+                <a href="@Url.Action("Delete", "Schedules", new {id =@item.Id})"> Delete</a>
+                
+              
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Script {
+    <script>
+        // Call the dataTables jQuery plugin
+$(document).ready(function() {
+  $('#tb').DataTable();
+});
+    </script>
+}
