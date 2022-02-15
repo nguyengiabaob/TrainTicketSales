@@ -1,0 +1,81 @@
+﻿@model TrainTicketSales.Models.Entity.Train
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Train</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Des)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Des)
+        </dd>
+
+    </dl>
+    <hr />
+    <h4>Tổng số khoang</h4>
+    <table id="tb" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cabin.ToList()[0].Index)
+                </th>
+                <th>
+                    Cabin Code
+                </th>
+                <th>
+                    Des
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Cabin)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Index)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CabinCategoryCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CabinCategoryCodeNavigation.Name)
+                    </td>
+                    <td>
+
+
+                        <a href="@Url.Action("Details", "Cabins", new {id =@item.Id})"> Details</a>|
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Code">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Script {
+<script>
+            // Call the dataTables jQuery plugin
+    $(document).ready(function() {
+      $('#tb').DataTable();
+    });
+</script>
+}
+

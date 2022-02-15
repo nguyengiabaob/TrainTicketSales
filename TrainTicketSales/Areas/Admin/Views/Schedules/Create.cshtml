@@ -1,0 +1,128 @@
+﻿@model TrainTicketSales.Models.Entity.Schedule;
+
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Schedule</h4>
+<hr />
+<div class="row">
+    <div class="container card card-body">
+        @*<form asp-action="Create" method="post">*@
+            <div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group col-sm-5">
+                <label asp-for="BeginStationId" class="control-label">Ga đi</label>
+                <select id="drpBeginStation" asp-for="BeginStationId" class="form-control" asp-items="ViewBag.EndStationId ">
+                </select>
+
+                <input type="hidden" asp-for="BeginStationId" />
+            </div>
+            <div class="form-group col-sm-5">
+                <label asp-for="EndStationId" class="control-label">Ga đến</label>
+                <select id="drpEndStation" asp-for="EndStationId" class="form-control" asp-items="ViewBag.EndStationId">
+                </select>
+
+                <input type="hidden" asp-for="EndStationId" />
+            </div>
+            <div class="form-group col-sm-5">
+                <label asp-for="TrainCode" class="control-label">Tàu </label>
+                <select id="TrainCode" asp-for="TrainCode" class="form-control" asp-items="ViewBag.TrainCode">
+                </select>
+            </div>
+            <div class="form-group col-sm-5">
+                <label asp-for="DateBegin" class="control-label">Ngày bắt đầu</label>
+                <input id="DateBegin" type="datetime-local" asp-for="DateBegin" class="form-control" />
+                <span asp-validation-for="DateBegin" class="text-danger"></span>
+            </div>
+            <div class="form-group col-sm-5">
+                <label asp-for="DateEnd" class="control-label">Ngày đến</label>
+                <input id="DateEnd" type="datetime-local" asp-for="DateEnd" class="form-control" />
+                <span asp-validation-for="DateEnd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input onclick="save()" type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Script {
+<script>
+
+    var save = () => {
+        let paramUpdate = {
+        BeginStationId: $("#drpBeginStation").val(), // cá nhân
+        EndStationId: $("#drpEndStation").val(),
+        TrainCode: $("#TrainCode").val(),
+        DateBegin: $("#DateBegin").val(),
+        DateEnd: $("#DateEnd").val(),
+        };
+        let data = JSON.stringify(paramUpdate);
+        console.log(data)
+    let url = '/Admin/Schedules/Create';
+    $.ajax({
+        type: "POST",
+        url: url,
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        data: data,
+         success: function (response) {         
+              if (response.status) {
+                window.open(response.result, "_self")
+            }
+
+
+        }
+
+    });
+
+    }
+
+
+
+
+
+
+                     var getStation = () => {
+        let url = '/Admin/Schedules/GetStation';
+        $.get(url).done(function (response) {
+            console.log(response.result)
+            let html = '`<option value="">Chọn ga</option>`';
+            let flag = 0;
+            $.each(response.result, function (i, e) {
+                     html += `<option value="${e.id}">${e.name}</option>`;
+            })
+            $('#drpBeginStation').html(html);
+            $('#drpEndStation').html(html);
+        });
+    }
+     var getTrain = () => {
+        let url = '/Admin/Schedules/GetTrain';
+        $.get(url).done(function (response) {
+            console.log(response.result)
+            let html = '`<option value="">Chọn tàu</option>`';
+            let flag = 0;
+            $.each(response.result, function (i, e) {
+                     html += `<option value="${e.code}">${e.name}</option>`;
+            })
+            $('#TrainCode').html(html);
+
+        });
+    }
+    $(document).ready(async function () {
+    getStation();
+    getTrain();
+    })
+
+</script>
+
+    }

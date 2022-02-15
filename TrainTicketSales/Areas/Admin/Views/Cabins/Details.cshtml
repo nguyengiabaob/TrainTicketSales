@@ -1,0 +1,86 @@
+﻿@model TrainTicketSales.Models.Entity.Cabin
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Cabin</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Index)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Index)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CabinCategoryCodeNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CabinCategoryCodeNavigation.Code)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainCodeNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TrainCodeNavigation.Code)
+        </dd>
+    </dl>
+    <hr />
+    <h4>Ghế thuộc khoang  </h4>
+    <table id="tb" class="table">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>           
+            <th>
+                Tầng 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seat.ToList()[0].SeatCategoryCodeNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Seat) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Index)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cabin.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FloorCodeNavigation.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeatCategoryCodeNavigation.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Script {
+    <script>
+        // Call the dataTables jQuery plugin
+$(document).ready(function() {
+  $('#tb').DataTable();
+});
+    </script>
+}

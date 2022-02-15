@@ -1,0 +1,47 @@
+﻿@model TrainTicketSales.Models.Entity.Seat
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Seat</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="CabinId" class="control-label"></label>
+                <select asp-for="CabinId" class="form-control" asp-items="ViewBag.CabinId"></select>
+                <span asp-validation-for="CabinId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatCategoryCode" class="control-label"></label>
+                <select asp-for="SeatCategoryCode" class="form-control" asp-items="ViewBag.SeatCategoryCode"></select>
+                <span asp-validation-for="SeatCategoryCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FloorCode" class="control-label"></label>
+                <select asp-for="FloorCode" class="form-control" asp-items="ViewBag.FloorCode"></select>
+                <span asp-validation-for="FloorCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Index" class="control-label"></label>
+                <input asp-for="Index" class="form-control" />
+                <span asp-validation-for="Index" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,14 @@ namespace TrainTicketSales.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            string token = HttpContext.Session.GetString("Token");
+            if (token == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+
+
             //var model= await _context.SaleOrder.Include(x=>x.SaleOrderDetail).ToListAsync();
             //return Json(new { status = true, result = model });
             return View(await _context.SaleOrder.Include(x => x.SaleOrderDetail).ToListAsync());
@@ -44,6 +53,13 @@ namespace TrainTicketSales.Areas.Admin.Controllers
         [HttpGet]
         public async Task<JsonResult> Index1()
         {
+            string token = HttpContext.Session.GetString("Token");
+
+            if (token == null)
+            {
+
+                return null;
+            }
 
             string domain = _httpContextAccessor.HttpContext.Request.Host.Value;
             string scheme = _httpContextAccessor.HttpContext.Request.Scheme;
@@ -52,13 +68,13 @@ namespace TrainTicketSales.Areas.Admin.Controllers
             var parameters = new DynamicParameters();
             parameters.Add("@url", fullDomainToUse + "/Admin/SaleOrders/Edit/");
             parameters.Add("@id", 0);
+
             var result = await _dapper.GetMultiByStoreProcedureAsync<SaleOrderViewModel>("SaleOrders_GetAll", parameters, commandType: CommandType.StoredProcedure);
-           if(result.Count() > 0)
+            if (result.Count() > 0)
             {
                 return Json(new { status = true, result = result });
             }
             return Json(new { status = false, result = "" });
-
         }
 
         // GET: Admin/SaleOrders/Details/5
@@ -83,6 +99,14 @@ namespace TrainTicketSales.Areas.Admin.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> SaveSaleOrderStatus(long id, int status)
         {
+            string token = HttpContext.Session.GetString("Token");
+
+            if (token == null)
+            {
+                return RedirectToAction("Login", "Home");
+
+            }
+
             var model = _context.SaleOrder.Where(x => x.Id == id).Include(x => x.SaleOrderDetail).FirstOrDefault();
 
             if (model != null)
